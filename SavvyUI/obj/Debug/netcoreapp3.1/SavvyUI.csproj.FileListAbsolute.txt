@@ -1,0 +1,13 @@
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\obj\Debug\netcoreapp3.1\SavvyUI.csprojAssemblyReference.cache
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\obj\Debug\netcoreapp3.1\SavvyUI.AssemblyInfoInputs.cache
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\obj\Debug\netcoreapp3.1\SavvyUI.AssemblyInfo.cs
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\obj\Debug\netcoreapp3.1\SavvyUI.csproj.CoreCompileInputs.cache
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\bin\Debug\netcoreapp3.1\SavvyUI.exe
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\bin\Debug\netcoreapp3.1\SavvyUI.deps.json
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\bin\Debug\netcoreapp3.1\SavvyUI.runtimeconfig.json
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\bin\Debug\netcoreapp3.1\SavvyUI.runtimeconfig.dev.json
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\bin\Debug\netcoreapp3.1\SavvyUI.dll
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\bin\Debug\netcoreapp3.1\SavvyUI.pdb
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\obj\Debug\netcoreapp3.1\SavvyUI.dll
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\obj\Debug\netcoreapp3.1\SavvyUI.pdb
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\obj\Debug\netcoreapp3.1\SavvyUI.genruntimeconfig.cache
