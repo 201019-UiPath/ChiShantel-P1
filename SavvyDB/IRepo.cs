@@ -1,10 +1,10 @@
-using SavvyLib;
-using Ststem.Collections.Generic;
+//using SavvyLib;
+using System.Collections.Generic;
 namespace SavvyDB
 {
     public interface IRepo
     {
-        void AddProduct(Product product);
-        List<Product> GetProduct;
+        //void AddProduct();
+        //List<Product> GetProduct;
     }
 }

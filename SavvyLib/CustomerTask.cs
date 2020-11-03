@@ -1,5 +1,5 @@
 using SavvyDB.Models;
-using SavvyDB;
+using SavvyDB.SavvyRepo;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
@@ -13,7 +13,7 @@ namespace SavvyLib
         }
          public void AddCustomer(Customer customer)
          {
-            repo.AddCustomerAsync(newCustomer);
+            repo.AddCustomer(customer);
          }
 
     }

@@ -3,14 +3,14 @@ using SavvyDB.Models;
 using System.Collections.Generic;
 namespace SavvyDB
 {
-    public interface IProduct
+    public interface IProductMapper
     {
-         Products ParseProduct(Products Products);
+         SavvyDB.Entities.Products ParseProduct(SavvyDB.Models.Products Products);
 
-         ICollection<Products> ParseProduct(List<Products> Product);
+         ICollection<SavvyDB.Models.Products> ParseProduct(List<SavvyDB.Entities.Products> Product);
          
-         Products ParseProduct(Products Products);
+         SavvyDB.Models.Products ParseProduct(SavvyDB.Entities.Products Products);
 
-         List<Products> ParseProduct(ICollection<Products> Product);
+         List<SavvyDB.Entities.Products> ParseProduct(ICollection<SavvyDB.Models.Products> Product);
     }
 }

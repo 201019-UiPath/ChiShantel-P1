@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
-namespace SavvyUI.Entities
+namespace SavvyDB.Entities
 {
     public partial class SavvyContext : DbContext
     {
@@ -29,7 +31,7 @@ namespace SavvyUI.Entities
             {
                 var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                Add.JsonFile("appsettings.json")
+                .AddJsonFile("appsettings.json")
                 .Build();
 
                 var connectionString= configuration.GetConnectionString("SavvyDB");

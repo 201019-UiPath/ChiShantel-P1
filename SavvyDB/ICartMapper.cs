@@ -5,10 +5,12 @@ namespace SavvyDB
 {
     public interface ICartMapper
     {
-         Cart ParseCart(Cart Cart);
+         SavvyDB.Entities.Cart ParseCart(SavvyDB.Models.Cart Cart);
 
-         ICollection<Cart> ParseCart(List<Cart> Cart);
+         SavvyDB.Models.Cart ParseCart(SavvyDB.Entities.Cart Cart);
 
-         List<Cart> ParseCart(ICollection<Cart> Cart);
+         ICollection<SavvyDB.Models.Cart> ParseCart(List<SavvyDB.Entities.Cart> Cart);
+
+         List<SavvyDB.Entities.Cart> ParseCart(ICollection<SavvyDB.Models.Cart> Cart);
     }
 }

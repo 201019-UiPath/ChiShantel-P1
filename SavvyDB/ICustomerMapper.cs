@@ -5,11 +5,11 @@ namespace SavvyDB
 {
     public interface ICustomerMapper
     {
-         Customer ParseCustomer(Customers customers);
+         Customer ParseCustomer(Customers Customer);
 
          ICollection<Customers> ParseCustomer(List<Customer> Customer);
          
-         Customers ParseCustomer (Customer customers);
+         Customers ParseCustomer (Customer Customer);
 
          List<Customer> ParseCustomer(ICollection<Customers> Customer);
     }

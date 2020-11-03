@@ -1,17 +1,18 @@
 using SavvyDB.Entities;
 using SavvyDB.Models;
 using System.Collections.Generic;
+
 namespace SavvyDB
 {
-    public class DBMapper : ICustomerMapper, IManagerMapper, IProductMapper, ICartMapper, IInventoryMapper
+    public class DBMapper : IMapper
     {
         public Customers ParseCustomer(Customer Customer)
         {
             return new Customers() 
             {
-                fname = Customer.fname,
-                lname = Customer.lname,
-                email = Customer.email
+                fname = Customer.Fname,
+                lname = Customer.Lname,
+                email = Customer.Email
             };
         }
         public ICollection<Customers> ParseCustomer(List<Customer> Customer)
@@ -25,11 +26,11 @@ namespace SavvyDB
         }
         public Customer ParseCustomer(Customers Customer)
         {
-            return new Customers()
+            return new Customer()
             {
-                fname = Customer.fname,
-                lname = Customer.lname,
-                email = Customer.email
+                Fname = Customer.fname,
+                Lname = Customer.lname,
+                Email = Customer.email
             };
         }
         public List<Customer> ParseCustomer(ICollection<Customers> Customer)
@@ -46,10 +47,10 @@ namespace SavvyDB
         {
             return new Managers()
             {
-                Fname = Manager.fname,
-                Lname = Manager.lname,
-                Email = Manager.email,
-                Location = Manager.locationid
+                Fname = Manager.Fname,
+                Lname = Manager.Lname,
+                Email = Manager.Email,
+                Location = Manager.Locationid
             };
         }
         //To DB
@@ -57,16 +58,16 @@ namespace SavvyDB
         {
             return new Manager()
             {
-                fname = Manager.Fname,
-                lname = Manager.Lname,
-                email = Manager.Email,
-                locationid = Manager.Location
+                Fname = Manager.Fname,
+                Lname = Manager.Lname,
+                Email = Manager.Email,
+                Locationid = Manager.Location
             };
         }
         public List<Manager> ParseManager(ICollection<Managers> Manager)
         {
             List<Manager> Managers = new List<Manager>();
-            foreach (var manager in Managers)
+            foreach (var manager in Manager)
             {
                 Managers.Add(ParseManager(manager));
             }
@@ -74,100 +75,120 @@ namespace SavvyDB
         }
         public ICollection<Managers> ParseManager(List<Manager> Manager)
         {
-            ICollection<Managers> Managers = new List<Manager>();
-            foreach (var manager in Managers)
+            ICollection<Managers> Managers = new List<Managers>();
+            foreach (var manager in Manager)
             {
                 Managers.Add(ParseManager(manager));
             }
             return Managers;
-        }
-        public Products ParseProduct(Products Product)
+        } 
+        public SavvyDB.Entities.Products ParseProduct(SavvyDB.Models.Products Product)
         {
-            return new Product()
+            return new SavvyDB.Entities.Products()
             {
-                Name = Product.productname,
-                Price = Product.productcost
+                Productname = Product.Name,
+                Productcost = Product.Price
             };
         }
-        public Products ParseProduct(Products Product)
+        public SavvyDB.Models.Products ParseProduct(SavvyDB.Entities.Products Product)
         {
-            return new Product()
+            return new SavvyDB.Models.Products()
             {
-                productname = Product.Name,
-                productcost = Product.Price
+                Name = Product.Productname,
+                Price = Product.Productcost
             };
         }
-        public ICollection<Products> ParseProduct(List<Products> Products)
+        public ICollection<SavvyDB.Models.Products> ParseProduct(List<SavvyDB.Entities.Products> Product)
         {
-            ICollection<Products> Products = new List<Products>();
-            foreach (var product in Products)
+            ICollection<SavvyDB.Models.Products> Products = new List<SavvyDB.Models.Products>();
+            foreach (var product in Product)
             {
                 Products.Add(ParseProduct(product));
             }
             return Products;
         }
-        public List<Products> ParseProduct(ICollection<Products> Products)
+        public List<SavvyDB.Entities.Products> ParseProduct(ICollection<SavvyDB.Models.Products> Product)
         {
-            List<Products> Products = new List<Products>();
-            foreach (var product in Products)
+            List<SavvyDB.Entities.Products> Products = new List<SavvyDB.Entities.Products>();
+            foreach (var product in Product)
             {
                 Products.Add(ParseProduct(product));
             }
             return Products;
         }
-        public Cart ParseCart(Cart Cart)
+        public SavvyDB.Entities.Cart ParseCart(SavvyDB.Models.Cart Cart)
         {
-            return new Cart()
+            return new SavvyDB.Entities.Cart()
             {
-                custid = Cart.custid,
-                productid = Cart.productid,
-                locationid = Cart.locationid,
+                Custid = Cart.custid,
+                Productid = Cart.productid,
+                Locationid = Cart.locationid,
+                Quantity = Cart.quantity
+            };
+        }
+        public SavvyDB.Models.Cart ParseCart(SavvyDB.Entities.Cart Cart)
+        {
+            return new SavvyDB.Models.Cart()
+            {
+                custid = Cart.Custid,
+                productid = Cart.Productid,
+                locationid = Cart.Locationid,
                 quantity = Cart.Quantity
             };
         }
-        public List<Cart> ParseCart(ICollection<Cart> Cart)
+        public List<SavvyDB.Entities.Cart> ParseCart(ICollection<SavvyDB.Models.Cart> Carts)
         {
-            List<Cart> Cart = new List<Cart>();
-            foreach (var cart in Cart)
+            List<SavvyDB.Entities.Cart> Cart = new List<SavvyDB.Entities.Cart>();
+            foreach (var cart in Carts)
             {
                 Cart.Add(ParseCart(cart));
             }
             return Cart;
         }
-        public ICollection<Cart> ParseCart(List<Cart> Cart)
+        public ICollection<SavvyDB.Models.Cart> ParseCart(List<SavvyDB.Entities.Cart> Carts)
         {
-            ICollection<Cart> Cart = new List<Cart>();
-            foreach (var cart in Cart)
+            ICollection<SavvyDB.Models.Cart> Cart = new List<SavvyDB.Models.Cart>();
+            foreach (var cart in Carts)
             {
                 Cart.Add(ParseCart(cart));
             }
             return Cart;
         }
-        public Inventory ParseInventory(Inventory Inventory)
+        public SavvyDB.Entities.Inventory ParseInventory(SavvyDB.Models.Inventory Inventory)
         {
-            return new Inventory()
+            return new SavvyDB.Entities.Inventory()
             {
-                productid = Inventory.productid,
-                quantity = Inventory.quantity
+                Locationid = Inventory.locationid,
+                Productid = Inventory.productid,
+                Quantity = Inventory.quantity
             };
         }
-        public ICollection<Inventory> ParseInventory(List<Inventory> Inventory)
+        public SavvyDB.Models.Inventory ParseInventory(SavvyDB.Entities.Inventory Inventory)
         {
-            ICollection<Inventory> Inventory = new List<Inventory>();
+            return new SavvyDB.Models.Inventory()
+            {
+                locationid = Inventory.Locationid,
+                productid = Inventory.Productid,
+                quantity = Inventory.Quantity
+            };
+        }
+        public ICollection<SavvyDB.Models.Inventory> ParseInventory(List<SavvyDB.Entities.Inventory> Inventory)
+        {
+            ICollection<SavvyDB.Models.Inventory> Inventories = new List<SavvyDB.Models.Inventory>();
             foreach (var inventory in Inventory)
             {
-                Inventory.Add(ParseInventory(product));
+                Inventories.Add(ParseInventory(inventory));
             }
-            return Inventory;
+            return Inventories;
         }
-        public List<Inventory> ParseInventory(ICollection<Inventory> Inventory)
+        public List<SavvyDB.Entities.Inventory> ParseInventory(ICollection<SavvyDB.Models.Inventory> Inventory)
         {
-            List<Inventory> Inventory = new List<Inventory>();
+            List<SavvyDB.Entities.Inventory> Inventories = new List<SavvyDB.Entities.Inventory>();
             foreach (var inventory in Inventory)
             {
-                Inventory.Add(ParseInventory(inventory));
+                Inventories.Add(ParseInventory(inventory));
             }
-            return Inventory;
-        }
+            return Inventories;
+        } 
     }
 }

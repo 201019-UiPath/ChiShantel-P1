@@ -3,12 +3,14 @@ using SavvyDB.Models;
 using System.Collections.Generic;
 namespace SavvyDB
 {
-    public interface IInventory
+    public interface IInventoryMapper
     {
-         Inventory ParseInventory(Inventory Inventory);
+         SavvyDB.Entities.Inventory ParseInventory(SavvyDB.Models.Inventory Inventory);
 
-         ICollection<Inventory> ParseInventory(List<Inventory> Inventory);
+         SavvyDB.Models.Inventory ParseInventory(SavvyDB.Entities.Inventory Inventory);
 
-         List<Inventory> ParseInventory(ICollection<Inventory> Inventory);
+         ICollection<SavvyDB.Models.Inventory> ParseInventory(List<SavvyDB.Entities.Inventory> Inventory);
+
+         List<SavvyDB.Entities.Inventory> ParseInventory(ICollection<SavvyDB.Models.Inventory> Inventory);
     }
 }

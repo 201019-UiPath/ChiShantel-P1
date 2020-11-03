@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SavvyUI.Entities
+namespace SavvyDB.Entities
 {
     public partial class PgStatStatements
     {

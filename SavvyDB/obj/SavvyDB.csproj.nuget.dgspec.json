@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj": {}
+    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvydb\\SavvyDB.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj": {
+    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvydb\\SavvyDB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj",
+        "projectUniqueName": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvydb\\SavvyDB.csproj",
         "projectName": "SavvyDB",
-        "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj",
+        "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvydb\\SavvyDB.csproj",
         "packagesPath": "C:\\Users\\Ckat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\obj\\",
+        "outputPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvydb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ckat\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -48,7 +48,7 @@
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[*, )"
+              "version": "[3.1.4, )"
             }
           },
           "imports": [

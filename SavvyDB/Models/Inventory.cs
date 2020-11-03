@@ -4,6 +4,7 @@ namespace SavvyDB.Models
     {
         public int Id {get; set;}
         public int locationid {get; set;}
+        public int? productid {get; set;}
         public int quantity {get; set;}
     }
 }
