@@ -18,7 +18,7 @@ namespace SavvyUI
             do 
             {
                 Console.WriteLine("What would you like to do?");
-                Console.WriteLine("[1] Add Location");
+                Console.WriteLine("[1] Add New Product");
                 Console.WriteLine("[2] Check Inventory");
                 Console.WriteLine("[3] Check Order History");
                 Console.WriteLine("[4] Replenish Inventory");

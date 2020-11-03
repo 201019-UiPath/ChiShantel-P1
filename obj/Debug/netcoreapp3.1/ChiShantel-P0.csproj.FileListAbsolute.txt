@@ -1,0 +1,4 @@
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\obj\Debug\netcoreapp3.1\ChiShantel-P0.csprojAssemblyReference.cache
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\obj\Debug\netcoreapp3.1\ChiShantel-P0.AssemblyInfoInputs.cache
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\obj\Debug\netcoreapp3.1\ChiShantel-P0.AssemblyInfo.cs
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\obj\Debug\netcoreapp3.1\ChiShantel-P0.csproj.CoreCompileInputs.cache
