@@ -2,6 +2,7 @@ using System;
 using SavvyDB;
 using SavvyDB.Models;
 using SavvyDB.Entities;
+using SavvyLib;
 using System.Collections.Generic;
 
 namespace SavvyUI
@@ -12,9 +13,10 @@ namespace SavvyUI
         private int count = 1;
         private int custID = 1;
         private int productID;
-        private List<Location> location;
+        private List<SavvyDB.Entities.Location> location;
         private List<SavvyDB.Models.Inventory> product;
         private SavvyRepo savvyRepo;
+        private int Productid = 3;
         public void start()
         {
             
@@ -30,8 +32,12 @@ namespace SavvyUI
                 switch (userInput) 
                 {
                     case "1":
+                        
                         Console.WriteLine("Select a location!");
                         location = savvyRepo.GetLocations();
+                        CustomerTask customerTask = new CustomerTask(savvyRepo); 
+                        CartTask cartTask = new CartTask(savvyRepo);
+                        SavvyDB.Models.Cart cart = new SavvyDB.Models.Cart();
                         count = 1;
                         foreach (Location singleLocation in location) 
                         { 
@@ -40,6 +46,7 @@ namespace SavvyUI
                             count ++;
                         }
                         userInput = Console.ReadLine();
+                        cart.locationid = Int32.Parse(userInput);
 
                         Console.WriteLine("Getting items...");
 
@@ -51,22 +58,23 @@ namespace SavvyUI
 
                         Console.WriteLine ("Select a product!");
                         userInput = Console.ReadLine();
-                        //savvyRepo.AddProduct(userInput);
+                        cart.productid = Int32.Parse(userInput);
                         Console.WriteLine("How many of this product do you wish to purchase?");
                         userInput = Console.ReadLine();
+                        cart.quantity = Int32.Parse(userInput);
+                        cart.custid = 1;
+                        cartTask.AddToCart(cart);
 
-                       // cart = savvyRepo.AddToCart(cart);
-
-                        //Pull up list of available items 
-                        //Select item
-                        //Select quantity
-                        //Add to order history
-                        //Subtract item quantity from inventory from that location
                         break;
                     case "2":  
-                        //Select Location
-                        //Pull up order history
-                        //Sort option(?)
+                        List<SavvyDB.Entities.Cart> carthistory = savvyRepo.GetOrderHistory();
+                        foreach (SavvyDB.Entities.Cart cartitem in carthistory)
+                        {
+                            Console.WriteLine("CustomerID: " + cartitem.Custid);
+                            Console.WriteLine("ProductID: " + cartitem.Productid);
+                            Console.WriteLine("LocationID: "+ cartitem.Locationid);
+                            Console.WriteLine("Quantity: " + cartitem.Quantity + "\n");
+                        }
                         break;
                     case "3":
                         //Select Location
