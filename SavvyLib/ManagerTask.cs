@@ -7,8 +7,13 @@ namespace SavvyLib
 {
     public class ManagerTask
     {
-        //private ManagerRepo repo;
-        public void addManager(Manager newManager)
+        private IManagerRepo repo;
+
+        public ManagerTask(IManagerRepo repo)
+        {
+            this.repo = repo;
+        }
+        /*public void addManager(Manager newManager)
         {
             repo.AddManager(newManager);
         }
@@ -16,6 +21,6 @@ namespace SavvyLib
         {
             Task<List<Products>> getProductsTask = repo.GetProducts;
             return getProductsTask.Result;
-        }
+        }*/
     }
 }
