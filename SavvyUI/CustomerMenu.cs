@@ -1,6 +1,7 @@
 using System;
-//using SavvyLib;
-//using SavvyDB;
+using SavvyDB;
+using SavvyDB.Models;
+using SavvyDB.Entities;
 using System.Collections.Generic;
 
 namespace SavvyUI
@@ -8,11 +9,12 @@ namespace SavvyUI
     public class customerMenu
     {
         private string userInput;
-        //private CustomerRepo customerRepo;
-        public customerMenu()
-        {
-            
-        }
+        private int count = 1;
+        private int custID = 1;
+        private int productID;
+        private List<Location> location;
+        private List<SavvyDB.Models.Inventory> product;
+        private SavvyRepo savvyRepo;
         public void start()
         {
             
@@ -24,10 +26,37 @@ namespace SavvyUI
                 Console.WriteLine("[3] Check Location Inventory");
                 Console.WriteLine("[4] Go back");
                 userInput = Console.ReadLine();
+                savvyRepo = new SavvyRepo(new SavvyContext(), new DBMapper()); 
                 switch (userInput) 
                 {
                     case "1":
-                        //Select Location
+                        Console.WriteLine("Select a location!");
+                        location = savvyRepo.GetLocations();
+                        count = 1;
+                        foreach (Location singleLocation in location) 
+                        { 
+                            Console.WriteLine("[" + count + "]");
+                            Console.WriteLine(singleLocation.Name);
+                            count ++;
+                        }
+                        userInput = Console.ReadLine();
+
+                        Console.WriteLine("Getting items...");
+
+                        List<SavvyDB.Entities.Inventory> product = savvyRepo.GetProducts(Int32.Parse(userInput));
+                        foreach (SavvyDB.Entities.Inventory singleProduct in product)
+                        {
+                            Console.WriteLine("Item ID: " + singleProduct.Productid);
+                        }
+
+                        Console.WriteLine ("Select a product!");
+                        userInput = Console.ReadLine();
+                        //savvyRepo.AddProduct(userInput);
+                        Console.WriteLine("How many of this product do you wish to purchase?");
+                        userInput = Console.ReadLine();
+
+                       // cart = savvyRepo.AddToCart(cart);
+
                         //Pull up list of available items 
                         //Select item
                         //Select quantity

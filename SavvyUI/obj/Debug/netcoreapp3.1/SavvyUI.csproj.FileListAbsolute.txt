@@ -38,3 +38,7 @@ C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\bin\Debug\netcoreapp3.1\Npgsq
 C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Ckat\Documents\Work\ChiShantel-P0\SavvyUI\obj\Debug\netcoreapp3.1\SavvyUI.csproj.CopyComplete
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\savvyui\bin\Debug\netcoreapp3.1\SavvyDB.dll
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\savvyui\bin\Debug\netcoreapp3.1\SavvyLib.dll
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\savvyui\bin\Debug\netcoreapp3.1\SavvyDB.pdb
+C:\Users\Ckat\Documents\Work\ChiShantel-P0\savvyui\bin\Debug\netcoreapp3.1\SavvyLib.pdb

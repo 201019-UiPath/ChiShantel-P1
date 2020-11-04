@@ -11,7 +11,9 @@
           "Microsoft.EntityFrameworkCore.Design": "3.1.9",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.9",
           "Microsoft.Extensions.Configuration.Json": "3.1.9",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.4"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.4",
+          "SavvyDB": "1.0.0",
+          "SavvyLib": "1.0.0"
         },
         "runtime": {
           "SavvyUI.dll": {}
@@ -307,7 +309,26 @@
           }
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.6.0": {}
+      "System.Runtime.CompilerServices.Unsafe/4.6.0": {},
+      "SavvyDB/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Json": "3.1.9",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.4"
+        },
+        "runtime": {
+          "SavvyDB.dll": {}
+        }
+      },
+      "SavvyLib/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Json": "3.1.9",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.4",
+          "SavvyDB": "1.0.0"
+        },
+        "runtime": {
+          "SavvyLib.dll": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -532,6 +553,16 @@
       "sha512": "sha512-HxozeSlipUK7dAroTYwIcGwKDeOVpQnJlpVaOkBz7CM4TsE5b/tKlQBZecTjh6FzcSbxndYaxxpsBMz+wMJeyw==",
       "path": "system.runtime.compilerservices.unsafe/4.6.0",
       "hashPath": "system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
+    },
+    "SavvyDB/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SavvyLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -360,6 +360,35 @@
         "runtime": {
           "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
+      },
+      "SavvyDB/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Json": "3.1.9",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.4"
+        },
+        "compile": {
+          "bin/placeholder/SavvyDB.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SavvyDB.dll": {}
+        }
+      },
+      "SavvyLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Json": "3.1.9",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.4",
+          "SavvyDB": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SavvyLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SavvyLib.dll": {}
+        }
       }
     }
   },
@@ -1037,6 +1066,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "SavvyDB/1.0.0": {
+      "type": "project",
+      "path": "../SavvyDB/SavvyDB.csproj",
+      "msbuildProject": "../SavvyDB/SavvyDB.csproj"
+    },
+    "SavvyLib/1.0.0": {
+      "type": "project",
+      "path": "../savvylib/SavvyLib.csproj",
+      "msbuildProject": "../savvylib/SavvyLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1044,7 +1083,9 @@
       "Microsoft.EntityFrameworkCore.Design >= 3.1.9",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.9",
       "Microsoft.Extensions.Configuration.Json >= 3.1.9",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 3.1.4"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 3.1.4",
+      "SavvyDB >= 1.0.0",
+      "SavvyLib >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1053,24 +1094,33 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyUI\\SavvyUI.csproj",
+      "projectUniqueName": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvyui\\SavvyUI.csproj",
       "projectName": "SavvyUI",
-      "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyUI\\SavvyUI.csproj",
+      "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvyui\\SavvyUI.csproj",
       "packagesPath": "C:\\Users\\Ckat\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyUI\\obj\\",
+      "outputPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvyui\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Ckat\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Ckat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj": {
+              "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj"
+            },
+            "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvylib\\SavvyLib.csproj": {
+              "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvylib\\SavvyLib.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
