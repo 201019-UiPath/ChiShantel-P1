@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvyui\\SavvyUI.csproj": {}
+    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyUI\\SavvyUI.csproj": {}
   },
   "projects": {
     "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj": {
@@ -150,14 +150,14 @@
         }
       }
     },
-    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvyui\\SavvyUI.csproj": {
+    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyUI\\SavvyUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvyui\\SavvyUI.csproj",
+        "projectUniqueName": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyUI\\SavvyUI.csproj",
         "projectName": "SavvyUI",
-        "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvyui\\SavvyUI.csproj",
+        "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyUI\\SavvyUI.csproj",
         "packagesPath": "C:\\Users\\Ckat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\savvyui\\obj\\",
+        "outputPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyUI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ckat\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -210,6 +210,14 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.10.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[4.1.0, )"
             }
           },
           "imports": [

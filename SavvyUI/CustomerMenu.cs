@@ -4,6 +4,7 @@ using SavvyDB.Models;
 using SavvyDB.Entities;
 using SavvyLib;
 using System.Collections.Generic;
+using Serilog;
 
 namespace SavvyUI
 {
@@ -16,7 +17,6 @@ namespace SavvyUI
         private List<SavvyDB.Entities.Location> location;
         private List<SavvyDB.Models.Inventory> product;
         private SavvyRepo savvyRepo;
-        private int Productid = 3;
         public void start()
         {
             
@@ -29,13 +29,13 @@ namespace SavvyUI
                 Console.WriteLine("[4] Go back");
                 userInput = Console.ReadLine();
                 savvyRepo = new SavvyRepo(new SavvyContext(), new DBMapper()); 
+                CustomerTask customerTask = new CustomerTask(savvyRepo);
                 switch (userInput) 
                 {
                     case "1":
                         
                         Console.WriteLine("Select a location!");
                         location = savvyRepo.GetLocations();
-                        CustomerTask customerTask = new CustomerTask(savvyRepo); 
                         CartTask cartTask = new CartTask(savvyRepo);
                         SavvyDB.Models.Cart cart = new SavvyDB.Models.Cart();
                         count = 1;
@@ -64,10 +64,11 @@ namespace SavvyUI
                         cart.quantity = Int32.Parse(userInput);
                         cart.custid = 1;
                         cartTask.AddToCart(cart);
-
+                        Log.Information("Cart Added!");
                         break;
                     case "2":  
                         List<SavvyDB.Entities.Cart> carthistory = savvyRepo.GetOrderHistory();
+                        Log.Information("Order history viewed!");
                         foreach (SavvyDB.Entities.Cart cartitem in carthistory)
                         {
                             Console.WriteLine("CustomerID: " + cartitem.Custid);
@@ -77,7 +78,26 @@ namespace SavvyUI
                         }
                         break;
                     case "3":
-                        //Select Location
+                        Console.WriteLine("Select a location!");
+                        location = savvyRepo.GetLocations();
+                        count = 1;
+                        foreach (Location singleLocation in location) 
+                        { 
+                            Console.WriteLine("[" + count + "]");
+                            Console.WriteLine(singleLocation.Name);
+                            count ++;
+                        }
+                        userInput = Console.ReadLine();
+
+                        Console.WriteLine("Getting items...");
+
+                        List<SavvyDB.Entities.Inventory> inventory = savvyRepo.GetProducts(Int32.Parse(userInput));
+                        foreach (SavvyDB.Entities.Inventory singleProduct in inventory)
+                        {
+                            Console.WriteLine("Item ID: " + singleProduct.Productid);
+                            Console.WriteLine("Item Quantity: " + singleProduct.Quantity);
+                        }
+                        
                         //Pull up list of available items          
                         break;
                     case "4":
