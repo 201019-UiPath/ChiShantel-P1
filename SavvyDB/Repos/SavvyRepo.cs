@@ -17,42 +17,62 @@ namespace SavvyDB
             this.mapper = mapper;
         }
         //Add product to cart
-       /* public void AddProduct(SavvyDB.Models.Products product)
+       public void AddProduct(SavvyDB.Models.Products product)
         {
             context.Products.Add(mapper.ParseProduct(product));
             context.SaveChanges();
         }
         //Get list of products from a location
-        //public List<Product> GetProducts()
-        /*{
-            return context.Product.Select(x => x)
+        /*public List<SavvyDB.Models.Inventory> GetProducts(int id)
+        {
+            return mapper.ParseInventory(
+                context.Inventory
+                .Include("Name")
+                .Where(x => x.Locationid == id)
+                .ToList()
+                
+            );
+        }
+        */
+        public List<SavvyDB.Entities.Inventory> GetProducts(int id)
+        {
+            return context.Inventory
+            //.Include("Inventory.Quantity")
+            .Where (x => x.Locationid == id)
             .ToList();
+        
         }
         //Add quantity to inventory
-        public void AddQuantity(int Product)
+        /*public void AddQuantity(Inventory inventory)
         {
-            //throw new System.NotImplementedException;
-        }
+            context.Inventory.Add(inventory);
+            context.SaveChanges();
+        }*/
         //Select location
-       // public Location SelectLocation()
+        public List<SavvyDB.Entities.Location> GetLocations()
         {
-            //throw new System.NotImplementedException;
+            return context.Location.Select(x => x)
+            .ToList();
         }
+        
         //Add quantity to cart
-        public void AddQuantity(int Product)
+        public void AddToCart(SavvyDB.Models.Cart cart)
         {
-            //throw new System.NotImplementedException;
+            context.Cart.Add(mapper.ParseCart(cart));
+            context.SaveChanges();
         }
+            
         //Remove quantity selected from inventory
-        public void RemoveQuantity(int Product)
+        /*public void RemoveQuantity(int Product)
         {
-            //throw new System.NotImplementedException;
-        }
+            throw new System.NotImplementedException;
+        } */
         //Check order history
-        //public List<Product> GetOrderHistory()
+        public List<SavvyDB.Entities.Cart> GetOrderHistory()
         {
-            //throw new System.NotImplementedException;
-        }
+            return context.Cart
+            .ToList();
+        }/*
         //Get list of customers
         //public List<Customer> GetCustomers()
         {
@@ -69,5 +89,6 @@ namespace SavvyDB
             context.Customer.Add(mapper.ParseCustomer(Customer));
             context.SaveChanges();
         }
+
     }
 }

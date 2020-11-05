@@ -7,12 +7,12 @@ namespace SavvyLib
 {
     public class CustomerTask
     {
-        private ICustomerRepo repo;
-        public CustomerTask(ICustomerRepo repo)
+        private SavvyRepo repo;
+        public CustomerTask(SavvyRepo repo)
         {
             this.repo = repo;
         }
-        private IQueryable<Customer> GetCustomerById(int id) =>
+        /*private IQueryable<Customer> GetCustomerById(int id) =>
     from o in _context.Customers.AsNoTracking()
     where o.Id == id
     select o;
@@ -28,11 +28,11 @@ namespace SavvyLib
         .FirstOrDefaultAsync();
 
     return Customer;
-        }
-        /*public void AddCustomer(Customers customer)
+        }*/
+        public void AddCustomer(Customers customer)
          {
             repo.AddCustomer(customer);
-         } */
+         } 
         
        
     }

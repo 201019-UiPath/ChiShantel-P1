@@ -1,7 +1,7 @@
-namespace SavvyDB
+/*namespace SavvyDB
 {
-    public interface IMapper : ICustomerMapper, IInventoryMapper, IManagerMapper, ICartMapper, IProductMapper
+    public interface IMapper : ICustomerMapper, IInventoryMapper, IManagerMapper, ICartMapper, IProductMapper, ILocationMapper
     {
          
     }
-}
+}*/

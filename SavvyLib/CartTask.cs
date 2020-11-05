@@ -8,8 +8,8 @@ namespace SavvyLib
 
     public class CartTask
     {
-        private ICartRepo repo;
-        public CartTask(ICartRepo repo)
+        private SavvyRepo repo;
+        public CartTask(SavvyRepo repo)
         {
             this.repo = repo;
         }

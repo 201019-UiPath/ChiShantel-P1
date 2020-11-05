@@ -1,4 +1,4 @@
-using SavvyDB.Entities;
+/*using SavvyDB.Entities;
 using SavvyDB.Models;
 using System.Collections.Generic;
 namespace SavvyDB
@@ -9,8 +9,8 @@ namespace SavvyDB
 
          Manager ParseManager(Managers Manager);
 
-         ICollection<Managers> ParseManager(List<Manager> Manager);
+         ICollection<Manager> ParseManager(ICollection<Managers> Manager);
 
-         List<Manager> ParseManager(ICollection<Managers> Manager);
+         List<Manager> ParseManager(List<Managers> Manager);
     }
-}
+}*/

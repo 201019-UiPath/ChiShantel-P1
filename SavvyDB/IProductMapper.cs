@@ -1,4 +1,4 @@
-using SavvyDB.Entities;
+/*using SavvyDB.Entities;
 using SavvyDB.Models;
 using System.Collections.Generic;
 namespace SavvyDB
@@ -13,4 +13,4 @@ namespace SavvyDB
 
          List<SavvyDB.Entities.Products> ParseProduct(ICollection<SavvyDB.Models.Products> Product);
     }
-}
+}*/

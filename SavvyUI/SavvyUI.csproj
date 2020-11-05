@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SavvyDB\SavvyDB.csproj" />
-    <ProjectReference Include="..\savvylib\SavvyLib.csproj" />
+    <ProjectReference Include="..\Savvylib\SavvyLib.csproj" />
   </ItemGroup>
 
 </Project>

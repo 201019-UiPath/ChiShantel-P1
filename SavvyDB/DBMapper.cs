@@ -1,4 +1,4 @@
-using SavvyDB.Entities;
+/*using SavvyDB.Entities;
 using SavvyDB.Models;
 using System.Collections.Generic;
 
@@ -64,7 +64,7 @@ namespace SavvyDB
                 Locationid = Manager.Location
             };
         }
-        public List<Manager> ParseManager(ICollection<Managers> Manager)
+        public ICollection<Manager> ParseManager(ICollection<Managers> Manager)
         {
             List<Manager> Managers = new List<Manager>();
             foreach (var manager in Manager)
@@ -73,9 +73,9 @@ namespace SavvyDB
             }
             return Managers;
         }
-        public ICollection<Managers> ParseManager(List<Manager> Manager)
+        public List<Manager> ParseManager(List<Managers> Manager)
         {
-            ICollection<Managers> Managers = new List<Managers>();
+            List<Manager> Managers = new List<Manager>();
             foreach (var manager in Manager)
             {
                 Managers.Add(ParseManager(manager));
@@ -136,7 +136,7 @@ namespace SavvyDB
                 quantity = Cart.Quantity
             };
         }
-        public List<SavvyDB.Entities.Cart> ParseCart(ICollection<SavvyDB.Models.Cart> Carts)
+        public List<SavvyDB.Entities.Cart> ParseCart(List<SavvyDB.Models.Cart> Carts)
         {
             List<SavvyDB.Entities.Cart> Cart = new List<SavvyDB.Entities.Cart>();
             foreach (var cart in Carts)
@@ -145,7 +145,7 @@ namespace SavvyDB
             }
             return Cart;
         }
-        public ICollection<SavvyDB.Models.Cart> ParseCart(List<SavvyDB.Entities.Cart> Carts)
+        public ICollection<SavvyDB.Models.Cart> ParseCart(ICollection<SavvyDB.Entities.Cart> Carts)
         {
             ICollection<SavvyDB.Models.Cart> Cart = new List<SavvyDB.Models.Cart>();
             foreach (var cart in Carts)
@@ -172,23 +172,57 @@ namespace SavvyDB
                 quantity = Inventory.Quantity
             };
         }
-        public ICollection<SavvyDB.Models.Inventory> ParseInventory(List<SavvyDB.Entities.Inventory> Inventory)
+        public List<SavvyDB.Models.Inventory> ParseInventory(List<SavvyDB.Entities.Inventory> Inventory)
         {
-            ICollection<SavvyDB.Models.Inventory> Inventories = new List<SavvyDB.Models.Inventory>();
+            List<SavvyDB.Models.Inventory> Inventories = new List<SavvyDB.Models.Inventory>();
             foreach (var inventory in Inventory)
             {
                 Inventories.Add(ParseInventory(inventory));
             }
             return Inventories;
         }
-        public List<SavvyDB.Entities.Inventory> ParseInventory(ICollection<SavvyDB.Models.Inventory> Inventory)
+        public ICollection<SavvyDB.Entities.Inventory> ParseInventory(ICollection<SavvyDB.Models.Inventory> Inventory)
         {
-            List<SavvyDB.Entities.Inventory> Inventories = new List<SavvyDB.Entities.Inventory>();
+            ICollection<SavvyDB.Entities.Inventory> Inventories = new List<SavvyDB.Entities.Inventory>();
             foreach (var inventory in Inventory)
             {
                 Inventories.Add(ParseInventory(inventory));
             }
             return Inventories;
+        }
+        public Location ParseLocation(Locations Location)
+        {
+            return new Location()
+            {
+                Name = Location.Name,
+                Employees = Location.Employees
+            };
+        }
+        public Locations ParseLocation(Location Location)
+        {
+            return new Locations()
+            {
+                Name = Location.Name,
+                Employees = Location.Employees
+            };
+        }
+        public ICollection<Location> ParseLocation(ICollection<Locations> Location)
+        {
+            ICollection<Location> Locations = new List<Location>();
+            foreach (var location in Location)
+            {
+                Locations.Add(ParseLocation(location));
+            }
+            return Locations;
+        } 
+        public List<Location> ParseLocation(List<Locations> Locations)
+        {
+            List<Location> Location = new List<Location>();
+            foreach (var location in Locations)
+            {
+                Location.Add(ParseLocation(location));
+            }
+            return Location;
         } 
     }
-}
+}*/

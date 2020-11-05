@@ -1,4 +1,4 @@
-using SavvyDB.Entities;
+/*using SavvyDB.Entities;
 using SavvyDB.Models;
 using System.Collections.Generic;
 namespace SavvyDB
@@ -9,8 +9,8 @@ namespace SavvyDB
 
          SavvyDB.Models.Cart ParseCart(SavvyDB.Entities.Cart Cart);
 
-         ICollection<SavvyDB.Models.Cart> ParseCart(List<SavvyDB.Entities.Cart> Cart);
+         ICollection<SavvyDB.Models.Cart> ParseCart(ICollection<SavvyDB.Entities.Cart> Cart);
 
-         List<SavvyDB.Entities.Cart> ParseCart(ICollection<SavvyDB.Models.Cart> Cart);
+         List<SavvyDB.Entities.Cart> ParseCart(List<SavvyDB.Models.Cart> Cart);
     }
-}
+}*/
