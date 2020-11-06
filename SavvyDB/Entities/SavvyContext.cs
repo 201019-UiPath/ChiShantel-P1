@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace SavvyDB.Entities
 {
-    public partial class vxpvkdsgContext : DbContext
+    public partial class SavvyContext : DbContext
     {
-        public vxpvkdsgContext()
+        public SavvyContext()
         {
         }
 
-        public vxpvkdsgContext(DbContextOptions<vxpvkdsgContext> options)
+        public SavvyContext(DbContextOptions<SavvyContext> options)
             : base(options)
         {
         }
