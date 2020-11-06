@@ -1,10 +1,12 @@
 using SavvyDB.Models;
-using System.Collections.Generic;
+namespace SavvyDB.Repos
 
-namespace SavvyDB
 {
     public interface IManagerRepo
     {
-         //Nothing yet
+         void AddManager(Managers Manager);
+         Managers GetManager(int id);
+         void UpdateManager(Managers Manager);
+         void DeleteManager(Managers Manager);
     }
 }

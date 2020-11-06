@@ -1,9 +1,13 @@
 using SavvyDB.Models;
+using System.Collections.Generic;
+namespace SavvyDB.Repos
 
-namespace SavvyDB
 {
     public interface IInventoryRepo
     {
-        // List<Inventory> GetProducts(int id);
+       void AddInventory(Inventory Inventory);
+       List<Inventory> GetInventory(int id);
+       void UpdateInventory(Inventory Inventory);
+       void DeleteInventory(Inventory Inventory);
     }
 }

@@ -1,10 +1,9 @@
-//using SavvyLib;
-using System.Collections.Generic;
-namespace SavvyDB
-{
-    public interface IRepo
-    {
-        //void AddProduct();
-        //List<Product> GetProduct;
-    }
-}
+// using SavvyDB.Models;
+// using SavvyDB.Repos;
+// namespace SavvyDB
+// {
+//     public interface IRepo : ICartItemRepo, ICartRepo, ICustomerRepo, IInventoryRepo, ILocationRepo, IManagerRepo, IOrderItemRepo, IOrderRepo, IProductsRepo
+//     {
+        
+//     }
+// }

@@ -1,8 +1,12 @@
 using SavvyDB.Models;
-namespace SavvyDB
+namespace SavvyDB.Repos
+
 {
     public interface ICartRepo
     {
-        void AddToCart(Cart Cart);
+        void AddCart(Cart Cart);
+        void UpdateCart(Cart Cart);
+        Cart GetCart(int id);
+        void DeleteCart(Cart Cart);
     }
 }
