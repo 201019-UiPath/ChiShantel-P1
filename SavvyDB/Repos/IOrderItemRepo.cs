@@ -2,7 +2,7 @@ using SavvyDB.Models;
 namespace SavvyDB.Repos
 
 {
-    public interface OrderItem
+    public interface IOrderItemRepo
     {
         void AddOrderItem(OrderItem OrderItem);
         OrderItem GetOrderItem(int id);

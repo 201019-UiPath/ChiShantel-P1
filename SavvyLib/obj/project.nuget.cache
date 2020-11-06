@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CvXFRvF1SpyXXMZ18PHV6hMIK6qH2qFdXCaUGIXwIeuxH8DzLOb7/agBv9DSFlBPmnA1nQB5ZjVOHt9ZVPhY2g==",
+  "dgSpecHash": "sAnwhBpQiFxpmX9MeRAuEV0Yjkvnbm/RURL1h9N601jC1wvwWZLgwJMgGPZFLA965chidOvrjBa/jjjTIS+yHw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyLib\\SavvyLib.csproj",
+  "projectFilePath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\Savvylib\\SavvyLib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ckat\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Ckat\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

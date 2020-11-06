@@ -1844,8 +1844,8 @@
     },
     "SavvyLib/1.0.0": {
       "type": "project",
-      "path": "../SavvyLib/SavvyLib.csproj",
-      "msbuildProject": "../SavvyLib/SavvyLib.csproj"
+      "path": "../Savvylib/SavvyLib.csproj",
+      "msbuildProject": "../Savvylib/SavvyLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1889,8 +1889,8 @@
             "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj": {
               "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj"
             },
-            "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyLib\\SavvyLib.csproj": {
-              "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyLib\\SavvyLib.csproj"
+            "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\Savvylib\\SavvyLib.csproj": {
+              "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\Savvylib\\SavvyLib.csproj"
             }
           }
         }

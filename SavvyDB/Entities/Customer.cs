@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
 namespace SavvyDB.Entities
+
 {
     public partial class Customer
     {
@@ -10,7 +9,6 @@ namespace SavvyDB.Entities
             Cart = new HashSet<Cart>();
             Orders = new HashSet<Orders>();
         }
-
         public int Custid { get; set; }
         public string Fname { get; set; }
         public string Lname { get; set; }

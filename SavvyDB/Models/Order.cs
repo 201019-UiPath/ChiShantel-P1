@@ -1,4 +1,5 @@
 namespace SavvyDB.Models
+
 {
     public class Order
     {

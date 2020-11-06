@@ -1,6 +1,5 @@
-using System.Collections.Generic;
-
 namespace SavvyDB.Models
+
 {
     public class Products
     {

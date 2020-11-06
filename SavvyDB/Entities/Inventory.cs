@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SavvyDB.Entities
+﻿namespace SavvyDB.Entities
 {
     public partial class Inventory
     {
