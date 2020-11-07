@@ -7,6 +7,7 @@ namespace SavvyDB.Mappers
     {
          Locations ParseLocation(Location Location);
          Location ParseLocation(Locations Location);
-         List<Locations> ParseLocation(List<Location> Location);
+         List<Locations> ParseLocation(ICollection<Location> Location);
+         ICollection<Location> ParseLocation(List<Locations> Location);
     }
 }

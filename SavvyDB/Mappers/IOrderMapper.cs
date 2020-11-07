@@ -7,9 +7,7 @@ namespace SavvyDB.Mappers
     {
          Orders ParseOrder(Order Order);
          Order ParseOrder(Orders Order);
-         ICollection<Order> ParseOrder(ICollection<Orders> Order);
-         ICollection<Orders> ParseOrder(ICollection<Order> Order);
-         List<Order> ParseOrder(List<Orders> Order);
-         List<Orders> ParseOrder(List<Order> Order);
+         ICollection<Orders> ParseOrder(List<Order> Order);
+         List<Order> ParseOrder(ICollection<Orders> Order);
     }
 }

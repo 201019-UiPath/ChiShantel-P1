@@ -7,9 +7,8 @@ namespace SavvyDB.Mappers
     {
          Managers ParseManager(Manager Manager);
          Manager ParseManager(Managers Manager);
-         ICollection<Manager> ParseManager(ICollection<Managers> Manager);
-         ICollection<Managers> ParseManager(ICollection<Manager> Manager);
-         List<Manager> ParseManager(List<Managers> Manager);
-         List<Managers> ParseManager(List<Manager> Manager);
+         ICollection<Manager> ParseManager(List<Managers> Manager);
+         List<Managers> ParseManager(ICollection<Manager> Manager);
+
     }
 }
