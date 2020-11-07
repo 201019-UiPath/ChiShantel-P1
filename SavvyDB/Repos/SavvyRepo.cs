@@ -4,6 +4,8 @@ using System.Linq;
 using SavvyDB.Entities;
 using SavvyDB.Mappers;
 using Microsoft.EntityFrameworkCore;
+using SavvyDB.Repos;
+
 namespace SavvyDB
 {
     public class SavvyRepo : IRepo
@@ -22,19 +24,6 @@ namespace SavvyDB
             context.Products.Add(mapper.ParseProduct(product));
             context.SaveChanges();
         }
-       /* public List<SavvyDB.Entities.Products> GetProducts()
-        {
-
-        }
-
-        public void UpdateProducts(SavvyDB.Entities.Products Products)
-        {
-
-        }
-        
-        public 
-        */
-        //Get list of products from a location
         public List<SavvyDB.Models.Inventory> GetProductsByLocation(int id)
         {
             return mapper.ParseInventory(
@@ -44,18 +33,7 @@ namespace SavvyDB
                 .ToList()
             );
         }
-        //Add quantity to inventory
-        public void AddQuantity(SavvyDB.Entities.Inventory inventory)
-        {
-            context.Inventory.Add(inventory);
-            context.SaveChanges();
-        }
-        //Select location
-        public List<SavvyDB.Entities.Location> GetLocations()
-        {
-            return context.Location.Select(x => x)
-            .ToList();
-        }
+
         
         //Add quantity to cart
         public void AddToCart(SavvyDB.Models.Cart cart)
@@ -64,28 +42,12 @@ namespace SavvyDB
             context.SaveChanges();
         }
             
-        //Remove quantity selected from inventory
-        /*public void RemoveQuantity(int Product)
-        {
-            throw new System.NotImplementedException;
-        } */
-        //Check order history
+        /*
         public List<SavvyDB.Entities.Cart> GetOrderHistory()
         {
-            return context.Cart
+            return context.OrderItem
             .ToList();
-        }/*
-        //Get list of customers
-        //public List<Customer> GetCustomers()
-        {
-            //throw new System.NotImplementedException;
-        }
-        //Get list of managers
-        //public List<Manager> GetManagers()
-        {
-            //throw new System.NotImplementedException;
-        } 
-        */
+        }*/
         public void AddCustomer(Customers Customer)
         {
             context.Customer.Add(mapper.ParseCustomer(Customer));
@@ -94,64 +56,82 @@ namespace SavvyDB
 
         public void AddCart(SavvyDB.Models.Cart Cart)
         {
-            throw new System.NotImplementedException();
+            context.Cart.Add(mapper.ParseCart(Cart));
+            context.SaveChanges();
         }
 
         public void UpdateCart(SavvyDB.Models.Cart Cart)
         {
-            throw new System.NotImplementedException();
+            context.Cart.Update(mapper.ParseCart(Cart));
+            context.SaveChanges();
         }
-
-        public SavvyDB.Models.Cart GetCart(int id)
+        /*public SavvyDB.Models.Cart GetCart(int id)
         {
-            throw new System.NotImplementedException();
-        }
+            return context.Cart.Select(id => id)
+            .ToList();
+        }*/
 
         public void DeleteCart(SavvyDB.Models.Cart Cart)
         {
-            throw new System.NotImplementedException();
+            context.Cart.Remove(mapper.ParseCart(Cart));
+            context.SaveChanges();
         }
 
-        public Customers GetCustomer(int id)
+        public Customer GetCustomer(int id)
         {
-            throw new System.NotImplementedException();
+            return (Customer) context.Customer.Single(x => x.Custid == id); 
         }
 
         public void UpdateCustomer(Customers Customer)
         {
-            throw new System.NotImplementedException();
+            context.Customer.Update(mapper.ParseCustomer(Customer));
+            context.SaveChanges();
         }
 
         public void DeleteCustomer(Customers Customer)
         {
-            throw new System.NotImplementedException();
+            context.Customer.Remove(mapper.ParseCustomer(Customer));
+            context.SaveChanges();
         }
 
         public void AddInventory(SavvyDB.Models.Inventory Inventory)
         {
-            throw new System.NotImplementedException();
+            context.Inventory.Add(mapper.ParseInventory(Inventory));
+            context.SaveChanges();
         }
 
         public List<SavvyDB.Models.Inventory> GetInventory(int id)
         {
-            throw new System.NotImplementedException();
+            return mapper.ParseInventory(
+                    context.Inventory
+                    .Where(x => x.LocationId == id)
+                    .ToList());
         }
 
         public void UpdateInventory(SavvyDB.Models.Inventory Inventory)
         {
-            throw new System.NotImplementedException();
+            context.Inventory.Update(mapper.ParseInventory(Inventory));
+            context.SaveChanges();            
         }
 
         public void DeleteInventory(SavvyDB.Models.Inventory Inventory)
         {
-            throw new System.NotImplementedException();
+            context.Inventory.Remove(mapper.ParseInventory(Inventory));
+            context.SaveChanges();
         }
 
         public void AddLocation(Locations Location)
         {
-            throw new System.NotImplementedException();
+            context.Location.Add(mapper.ParseLocation(Location));
+            context.SaveChanges();
         }
-
+        //Select location
+        public List<SavvyDB.Models.Locations> GetLocations()
+        {
+            return mapper.ParseLocation(context.Location.Select(x => x))
+            .ToList();
+        }
+        
         public Locations GetLocation(int id)
         {
             throw new System.NotImplementedException();
@@ -258,6 +238,16 @@ namespace SavvyDB
         }
 
         public void DeleteProduct(Models.Products Products)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Models.Cart GetCart(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        Customers ICustomerRepo.GetCustomer(int id)
         {
             throw new System.NotImplementedException();
         }

@@ -202,18 +202,10 @@ namespace SavvyDB.Mappers
                 Employees = Location.Employees
             };
         }
-        public ICollection<Location> ParseLocation(ICollection<Locations> Location)
+ 
+        public List<Locations> ParseLocation(List<Location> Locations)
         {
-            ICollection<Location> Locations = new List<Location>();
-            foreach (var location in Location)
-            {
-                Locations.Add(ParseLocation(location));
-            }
-            return Locations;
-        } 
-        public List<Location> ParseLocation(List<Locations> Locations)
-        {
-            List<Location> Location = new List<Location>();
+            List<Locations> Location = new List<Locations>();
             foreach (var location in Locations)
             {
                 Location.Add(ParseLocation(location));
@@ -267,16 +259,6 @@ namespace SavvyDB.Mappers
         }
 
         public List<Models.Products> ParseProduct(ICollection<Entities.Products> Product)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public ICollection<Locations> ParseLocation(ICollection<Location> Location)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public List<Locations> ParseLocation(List<Location> Location)
         {
             throw new System.NotImplementedException();
         }
