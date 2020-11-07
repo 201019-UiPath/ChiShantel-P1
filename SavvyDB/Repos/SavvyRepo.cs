@@ -128,7 +128,7 @@ namespace SavvyDB
         //Select location
         public List<SavvyDB.Models.Locations> GetLocations()
         {
-            return mapper.ParseLocation(context.Location.Select(x => x))
+            return mapper.ParseLocation(context.Locations)
             .ToList();
         }
         

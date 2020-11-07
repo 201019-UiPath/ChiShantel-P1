@@ -222,5 +222,123 @@ namespace SavvyDB.Mappers
             return Location;
         }
 
+        public Entities.CartItem ParseCartItem(Models.CartItem CartItem)
+        {
+            return new Entities.CartItem()
+            {
+                CartItemId = CartItem.CartItemId,
+                Productid = CartItem.ProductId,
+                CartId = CartItem.CartId 
+            };
+        }
+
+        public Models.CartItem ParseCartItem(Entities.CartItem CartItem)
+        {
+            return new Models.CartItem()
+            {
+                CartItemId = CartItem.CartItemId,
+                ProductId = CartItem.Productid,
+                CartId = CartItem.CartId 
+            };
+        }
+
+        public ICollection<Entities.CartItem> ParseCartItem(List<Models.CartItem> CartItem)
+        {
+            ICollection<Entities.CartItem> CartItems = new List<Entities.CartItem>();
+            foreach (var cartitem in CartItem)
+            {
+                CartItems.Add(ParseCartItem(cartitem));
+            }
+            return CartItems;
+        }
+
+        public List<Models.CartItem> ParseCartItem(ICollection<Entities.CartItem> CartItem)
+        {
+            List<Models.CartItem> CartItems = new List<Models.CartItem>();
+            foreach (var cartitem in CartItem)
+            {
+                CartItems.Add(ParseCartItem(cartitem));
+            }
+            return CartItems;
+        }
+
+        public Entities.OrderItem ParseOrderItem(Models.OrderItem OrderItem)
+        {
+            return new Entities.OrderItem()
+            {
+                OrderItemId = OrderItem.OrderItemId,
+                ProductId = OrderItem.ProductId,
+                OrderId = OrderItem.OrderId 
+            };
+        }
+
+        public Models.OrderItem ParseOrderItem(Entities.OrderItem OrderItem)
+        {
+            return new Models.OrderItem()
+            {
+                OrderItemId = OrderItem.OrderItemId,
+                ProductId = OrderItem.ProductId,
+                OrderId = OrderItem.OrderId 
+            };
+        }
+
+        public ICollection<Entities.OrderItem> ParseOrderItem(List<Models.OrderItem> OrderItem)
+        {
+            ICollection<Entities.OrderItem> OrderItems = new List<Entities.OrderItem>();
+            foreach (var orderitem in OrderItem)
+            {
+                OrderItems.Add(ParseOrderItem(orderitem));
+            }
+            return OrderItems;
+        }
+
+        public List<Models.OrderItem> ParseOrderItem(ICollection<Entities.OrderItem> OrderItem)
+        {
+            List<Models.OrderItem> OrderItems = new List<Models.OrderItem>();
+            foreach (var orderitem in OrderItem)
+            {
+                OrderItems.Add(ParseOrderItem(orderitem));
+            }
+            return OrderItems;
+        }
+
+        public Orders ParseOrder(Order Order)
+        {
+            return new Orders()
+            {
+                OrderId = Order.Orderid,
+                Custid = Order.CustId,
+            };
+        }
+
+        public Order ParseOrder(Orders Order)
+        {
+            return new Order()
+            {
+                Orderid = Order.OrderId,
+                CustId = Order.Custid
+            };
+        }
+
+        public ICollection<Orders> ParseOrder(List<Order> Order)
+        {
+            ICollection<Orders> Orders = new List<Orders>();
+            foreach (var order in Order)
+            {
+                Orders.Add(ParseOrder(order));
+            }
+            return Orders;
+        }
+
+        public List<Order> ParseOrder(ICollection<Orders> Order)
+        {
+            List<Models.Order> Orders = new List<Models.Order>();
+            foreach (var order in Order)
+            {
+                Orders.Add(ParseOrder(order));
+            }
+            return Orders;
+        }
+
     }
 }
