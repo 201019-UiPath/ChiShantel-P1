@@ -7,12 +7,10 @@ namespace SavvyDB.Entities
         public SavvyContext()
         {
         }
-
         public SavvyContext(DbContextOptions<SavvyContext> options)
             : base(options)
         {
         }
-
         public virtual DbSet<Cart> Cart { get; set; }
         public virtual DbSet<CartItem> CartItem { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }

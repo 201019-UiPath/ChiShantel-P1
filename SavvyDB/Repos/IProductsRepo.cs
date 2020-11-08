@@ -6,7 +6,8 @@ namespace SavvyDB.Repos
     public interface IProductsRepo
     {
          void AddProduct(Products Products);
-         List<Products> GetProduct(Products Products);
+         Products GetProduct(int id);
+         List<Products> GetAllProducts();
          void UpdateProduct(Products Products);
          void DeleteProduct(Products Products);
     }

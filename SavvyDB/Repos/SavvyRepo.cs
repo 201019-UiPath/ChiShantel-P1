@@ -19,11 +19,6 @@ namespace SavvyDB
             this.mapper = mapper;
         }
 
-       public void AddProduct(SavvyDB.Models.Products product)
-        {
-            context.Products.Add(mapper.ParseProduct(product));
-            context.SaveChanges();
-        }
         public List<SavvyDB.Models.Inventory> GetProductsByLocation(int id)
         {
             return mapper.ParseInventory(
@@ -33,31 +28,37 @@ namespace SavvyDB
                 .ToList()
             );
         }
-
-        
-        //Add quantity to cart
-        public void AddToCart(SavvyDB.Models.Cart cart)
-        {
-            context.Cart.Add(mapper.ParseCart(cart));
-            context.SaveChanges();
-        }
-            
-        /*
-        public List<SavvyDB.Entities.Cart> GetOrderHistory()
-        {
-            return context.OrderItem
-            .ToList();
-        }*/
         public void AddCustomer(Customers Customer)
         {
             context.Customer.Add(mapper.ParseCustomer(Customer));
             context.SaveChanges();
         }
-
+        public List<Customers> GetCustomer(int id)
+        {
+            return mapper.ParseCustomer(
+                    context.Customer
+                    .Where(x => x.Custid == id)
+                    .ToList());
+        }
+        public List<Customers> GetAllCustomers(Customers Customer)
+        {
+            return mapper.ParseCustomer(
+                context.Customer
+                .ToList()
+            );
+        }
         public void AddCart(SavvyDB.Models.Cart Cart)
         {
             context.Cart.Add(mapper.ParseCart(Cart));
             context.SaveChanges();
+        }
+
+        public List<Models.Cart> GetCart(int id)
+        {
+            return mapper.ParseCart(
+                context.Cart
+                .Where(x => x.CartId == id)
+                .ToList());
         }
 
         public void UpdateCart(SavvyDB.Models.Cart Cart)
@@ -65,21 +66,11 @@ namespace SavvyDB
             context.Cart.Update(mapper.ParseCart(Cart));
             context.SaveChanges();
         }
-        /*public SavvyDB.Models.Cart GetCart(int id)
-        {
-            return context.Cart.Select(id => id)
-            .ToList();
-        }*/
 
         public void DeleteCart(SavvyDB.Models.Cart Cart)
         {
             context.Cart.Remove(mapper.ParseCart(Cart));
             context.SaveChanges();
-        }
-
-        public Customer GetCustomer(int id)
-        {
-            return (Customer) context.Customer.Single(x => x.Custid == id); 
         }
 
         public void UpdateCustomer(Customers Customer)
@@ -128,128 +119,170 @@ namespace SavvyDB
         //Select location
         public List<SavvyDB.Models.Locations> GetLocations()
         {
-            return mapper.ParseLocation(context.Locations)
-            .ToList();
+            return mapper.ParseLocation(
+                context.Location
+                .ToList()
+            );
         }
-        
+        //Select location by id
         public Locations GetLocation(int id)
         {
-            throw new System.NotImplementedException();
+            return mapper.ParseLocation(context.Location
+            .First(x => x.Locationid == id));
         }
 
         public void UpdateLocation(Locations Location)
         {
-            throw new System.NotImplementedException();
+            context.Location.Update(mapper.ParseLocation(Location));
+            context.SaveChanges();
         }
 
         public void DeleteLocation(Locations Location)
         {
-            throw new System.NotImplementedException();
+            context.Location.Remove(mapper.ParseLocation(Location));
+            context.SaveChanges();
         }
 
         public void AddManager(Managers Manager)
         {
-            throw new System.NotImplementedException();
+            context.Manager.Add(mapper.ParseManager(Manager));
+            context.SaveChanges();
         }
 
         public Managers GetManager(int id)
         {
-            throw new System.NotImplementedException();
+            return mapper.ParseManager(
+                context.Manager
+                .Where(x => x.Managerid == id)
+                .ToList());
+        }
+        public List<Managers> GetAllManagers()
+        {
+            return mapper.ParseManager(
+                context.Manager
+                .ToList()
+            );
         }
 
         public void UpdateManager(Managers Manager)
         {
-            throw new System.NotImplementedException();
+            context.Manager.Update(mapper.ParseManager(Manager));
+            context.SaveChanges();
         }
 
         public void DeleteManager(Managers Manager)
         {
-            throw new System.NotImplementedException();
+            context.Manager.Remove(mapper.ParseManager(Manager));
+            context.SaveChanges();;
         }
 
         public void AddCartItem(Models.CartItem CartItem)
         {
-            throw new System.NotImplementedException();
+            context.CartItem.Add(mapper.ParseCartItem(CartItem));
+            context.SaveChanges();
         }
 
         public Models.CartItem GetCartItem(int id)
         {
-            throw new System.NotImplementedException();
+            return mapper.ParseCartItem(
+                context.CartItem
+                .Where(o => o.CartItemId == id)
+                .ToList());
         }
 
         public void UpdateCartItem(Models.CartItem CartItem)
         {
-            throw new System.NotImplementedException();
+            context.CartItem.Update(mapper.ParseCartItem(CartItem));
+            context.SaveChanges();
         }
 
         public void DeleteCartItem(Models.CartItem CartItem)
         {
-            throw new System.NotImplementedException();
+            context.CartItem.Remove(mapper.ParseCartItem(CartItem));
+            context.SaveChanges();
         }
 
         public void AddOrderItem(Models.OrderItem OrderItem)
         {
-            throw new System.NotImplementedException();
+            context.OrderItem.Add(mapper.ParseOrderItem(OrderItem));
+            context.SaveChanges();
         }
 
         public Models.OrderItem GetOrderItem(int id)
         {
-            throw new System.NotImplementedException();
+            return mapper.ParseOrderItem(
+                context.OrderItem
+                .Where(o => o.OrderItemId == id)
+                .ToList());
         }
 
         public void UpdateOrderItem(Models.OrderItem OrderItem)
         {
-            throw new System.NotImplementedException();
+            context.OrderItem.Update(mapper.ParseOrderItem(OrderItem));
+            context.SaveChanges();
         }
 
         public void DeleteOrderItem(Models.OrderItem OrderItem)
         {
-            throw new System.NotImplementedException();
+            context.OrderItem.Remove(mapper.ParseOrderItem(OrderItem));
+            context.SaveChanges();
         }
 
         public void AddOrder(Order Orders)
         {
-            throw new System.NotImplementedException();
+            context.Orders.Add(mapper.ParseOrder(Orders));
+            context.SaveChanges();
         }
 
-        public Order GetOrder(int id)
+        public List<Order> GetOrder(int id)
         {
-            throw new System.NotImplementedException();
+             return mapper.ParseOrder(
+                    context.Orders
+                    .Where(c => c.Custid == id)
+                    .ToList());
         }
 
         public void UpdateOrder(Order Orders)
         {
-            throw new System.NotImplementedException();
+            context.Orders.Update(mapper.ParseOrder(Orders));
+            context.SaveChanges();
         }
 
         public void DeleteOrder(Order Orders)
         {
-            throw new System.NotImplementedException();
+            context.Orders.Remove(mapper.ParseOrder(Orders));
+            context.SaveChanges();
         }
 
-        public List<Models.Products> GetProduct(Models.Products Products)
+        public Models.Products GetProduct(int id)
         {
-            throw new System.NotImplementedException();
+            return mapper.ParseProduct(
+                context.Products
+                .First(p => p.Productid == id)
+            );
         }
-
+        public List<Models.Products> GetAllProducts()
+        {
+            return mapper.ParseProduct(
+                context.Products
+                .ToList()
+            );
+        }
+        public void AddProduct(SavvyDB.Models.Products Products)
+        {
+            context.Products.Add(mapper.ParseProduct(Products));
+            context.SaveChanges();
+        }
         public void UpdateProduct(Models.Products Products)
         {
-            throw new System.NotImplementedException();
+            context.Products.Update(mapper.ParseProduct(Products));
+            context.SaveChanges();
         }
 
         public void DeleteProduct(Models.Products Products)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public Models.Cart GetCart(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        Customers ICustomerRepo.GetCustomer(int id)
-        {
-            throw new System.NotImplementedException();
+            context.Products.Remove(mapper.ParseProduct(Products));
+            context.SaveChanges();
         }
     }
 }
