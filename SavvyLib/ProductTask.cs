@@ -1,31 +1,31 @@
-// using SavvyDB;
-// using SavvyDB.Models;
+using SavvyDB;
+using SavvyDB.Models;
 
-// namespace SavvyLib
-// {
-//     public class ProductTask
-//     {
-//         private SavvyRepo repo;
+namespace SavvyLib
+{
+    public class ProductTask
+    {
+        private SavvyRepo repo;
 
-//         public ProductTask(SavvyRepo repo)
-//         {
-//             this.repo = repo;
-//         }
-//         public void AddProduct(Products Product)
-//         {
-//             repo.AddProduct(Product);
-//         }
-//         public void GetProduct(int id)
-//         {
-//             repo.GetProduct(id);
-//         }
-//         public void UpdateProduct(Products Product)
-//         {
-//             repo.UpdateProduct(Product);
-//         }
-//         public void RemoveProduct(Products Product)
-//         {
-//             repo.DeleteProduct(Product);
-//         }
-//     }
-// }
+        public ProductTask(SavvyRepo repo)
+        {
+            this.repo = repo;
+        }
+        public void AddProduct(Product Product)
+        {
+            repo.AddProduct(Product);
+        }
+        public Product GetProduct(int id)
+        {
+            return repo.GetProduct(id);
+        }
+        public void UpdateProduct(Product Product)
+        {
+            repo.UpdateProduct(Product);
+        }
+        public void RemoveProduct(Product Product)
+        {
+            repo.DeleteProduct(Product);
+        }
+    }
+}

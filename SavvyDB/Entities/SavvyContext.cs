@@ -26,6 +26,7 @@ namespace SavvyDB.Entities
         public virtual DbSet<PgStatStatements> PgStatStatements { get; set; }
         public virtual DbSet<Products> Products { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasPostgresExtension("btree_gin")
@@ -245,6 +246,12 @@ namespace SavvyDB.Entities
                     .ValueGeneratedNever();
 
                 entity.Property(e => e.Customerid).HasColumnName("customerid");
+
+                entity.Property(e => e.Date)
+                    .HasColumnName("date")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.Totalprice).HasColumnName("totalprice");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)

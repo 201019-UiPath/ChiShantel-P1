@@ -8,6 +8,8 @@ namespace SavvyDB.Repos
         void AddCart(Cart Cart);
         void UpdateCart(Cart Cart);
         Cart GetCart(int id);
+        Cart GetCartByCustomer(int id);
+        List<Cart> GetAllCarts();
         void DeleteCart(Cart Cart);
     }
 }
