@@ -1,21 +1,23 @@
-﻿using System.Collections.Generic;
-namespace SavvyDB.Entities
+﻿using System;
+using System.Collections.Generic;
 
+namespace SavvyDB.Entities
 {
     public partial class Products
     {
         public Products()
         {
-            CartItem = new HashSet<CartItem>();
-            Inventory = new HashSet<Inventory>();
-            OrderItem = new HashSet<OrderItem>();
+            CartItems = new HashSet<CartItems>();
+            Inventories = new HashSet<Inventories>();
+            OrderItems = new HashSet<OrderItems>();
         }
+
         public int Productid { get; set; }
         public string Productname { get; set; }
-        public string Description { get; set; }
-        public decimal? Productcost { get; set; }
-        public virtual ICollection<CartItem> CartItem { get; set; }
-        public virtual ICollection<Inventory> Inventory { get; set; }
-        public virtual ICollection<OrderItem> OrderItem { get; set; }
+        public decimal? Cost { get; set; }
+
+        public virtual ICollection<CartItems> CartItems { get; set; }
+        public virtual ICollection<Inventories> Inventories { get; set; }
+        public virtual ICollection<OrderItems> OrderItems { get; set; }
     }
 }

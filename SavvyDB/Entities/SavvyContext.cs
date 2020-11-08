@@ -1,23 +1,27 @@
-﻿using Microsoft.EntityFrameworkCore;
-namespace SavvyDB.Entities
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
+namespace SavvyDB.Entities
 {
     public partial class SavvyContext : DbContext
     {
         public SavvyContext()
         {
         }
+
         public SavvyContext(DbContextOptions<SavvyContext> options)
             : base(options)
         {
         }
-        public virtual DbSet<Cart> Cart { get; set; }
-        public virtual DbSet<CartItem> CartItem { get; set; }
-        public virtual DbSet<Customer> Customer { get; set; }
-        public virtual DbSet<Inventory> Inventory { get; set; }
-        public virtual DbSet<Location> Location { get; set; }
-        public virtual DbSet<Manager> Manager { get; set; }
-        public virtual DbSet<OrderItem> OrderItem { get; set; }
+
+        public virtual DbSet<CartItems> CartItems { get; set; }
+        public virtual DbSet<Carts> Carts { get; set; }
+        public virtual DbSet<Customers> Customers { get; set; }
+        public virtual DbSet<Inventories> Inventories { get; set; }
+        public virtual DbSet<Locations> Locations { get; set; }
+        public virtual DbSet<Managers> Managers { get; set; }
+        public virtual DbSet<OrderItems> OrderItems { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<PgStatStatements> PgStatStatements { get; set; }
         public virtual DbSet<Products> Products { get; set; }
@@ -46,56 +50,64 @@ namespace SavvyDB.Entities
                 .HasPostgresExtension("uuid-ossp")
                 .HasPostgresExtension("xml2");
 
-            modelBuilder.Entity<Cart>(entity =>
+            modelBuilder.Entity<CartItems>(entity =>
             {
-                entity.ToTable("cart");
+                entity.HasKey(e => e.Cartitemid)
+                    .HasName("cart_items_pkey");
 
-                entity.Property(e => e.CartId)
-                    .HasColumnName("cart_id")
+                entity.ToTable("cart_items");
+
+                entity.Property(e => e.Cartitemid)
+                    .HasColumnName("cartitemid")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.Custid).HasColumnName("custid");
-
-                entity.HasOne(d => d.Cust)
-                    .WithMany(p => p.Cart)
-                    .HasForeignKey(d => d.Custid)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("cart_custid_fkey");
-            });
-
-            modelBuilder.Entity<CartItem>(entity =>
-            {
-                entity.ToTable("cart_item");
-
-                entity.Property(e => e.CartItemId)
-                    .HasColumnName("cart_item_id")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.CartId).HasColumnName("cart_id");
+                entity.Property(e => e.Cartid).HasColumnName("cartid");
 
                 entity.Property(e => e.Productid).HasColumnName("productid");
 
                 entity.HasOne(d => d.Cart)
-                    .WithMany(p => p.CartItem)
-                    .HasForeignKey(d => d.CartId)
+                    .WithMany(p => p.CartItems)
+                    .HasForeignKey(d => d.Cartid)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("cart_item_cart_id_fkey");
+                    .HasConstraintName("cart_items_cartid_fkey");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany(p => p.CartItem)
+                    .WithMany(p => p.CartItems)
                     .HasForeignKey(d => d.Productid)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("cart_item_productid_fkey");
+                    .HasConstraintName("cart_items_productid_fkey");
             });
 
-            modelBuilder.Entity<Customer>(entity =>
+            modelBuilder.Entity<Carts>(entity =>
             {
-                entity.HasKey(e => e.Custid)
-                    .HasName("customer_pkey");
+                entity.HasKey(e => e.Cartid)
+                    .HasName("carts_pkey");
 
-                entity.ToTable("customer");
+                entity.ToTable("carts");
 
-                entity.Property(e => e.Custid).HasColumnName("custid");
+                entity.Property(e => e.Cartid)
+                    .HasColumnName("cartid")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Customerid).HasColumnName("customerid");
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Carts)
+                    .HasForeignKey(d => d.Customerid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("carts_customerid_fkey");
+            });
+
+            modelBuilder.Entity<Customers>(entity =>
+            {
+                entity.HasKey(e => e.Customerid)
+                    .HasName("customers_pkey");
+
+                entity.ToTable("customers");
+
+                entity.Property(e => e.Customerid)
+                    .HasColumnName("customerid")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Email)
                     .HasColumnName("email")
@@ -106,41 +118,51 @@ namespace SavvyDB.Entities
                     .HasMaxLength(20);
 
                 entity.Property(e => e.Lname)
+                    .IsRequired()
                     .HasColumnName("lname")
                     .HasMaxLength(20);
             });
 
-            modelBuilder.Entity<Inventory>(entity =>
+            modelBuilder.Entity<Inventories>(entity =>
             {
-                entity.ToTable("inventory");
+                entity.HasKey(e => e.Inventoryid)
+                    .HasName("inventories_pkey");
 
-                entity.Property(e => e.InventoryId)
-                    .HasColumnName("inventory_id")
+                entity.ToTable("inventories");
+
+                entity.Property(e => e.Inventoryid)
+                    .HasColumnName("inventoryid")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.LocationId).HasColumnName("location_id");
+                entity.Property(e => e.Locationid).HasColumnName("locationid");
 
-                entity.Property(e => e.ProductId).HasColumnName("product_id");
+                entity.Property(e => e.Productid).HasColumnName("productid");
 
                 entity.Property(e => e.Quantity).HasColumnName("quantity");
 
                 entity.HasOne(d => d.Location)
-                    .WithMany(p => p.Inventory)
-                    .HasForeignKey(d => d.LocationId)
+                    .WithMany(p => p.Inventories)
+                    .HasForeignKey(d => d.Locationid)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("inventory_location_id_fkey");
+                    .HasConstraintName("inventories_locationid_fkey");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany(p => p.Inventory)
-                    .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("inventory_product_id_fkey");
+                    .WithMany(p => p.Inventories)
+                    .HasForeignKey(d => d.Productid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("inventories_productid_fkey");
             });
 
-            modelBuilder.Entity<Location>(entity =>
+            modelBuilder.Entity<Locations>(entity =>
             {
-                entity.ToTable("location");
+                entity.HasKey(e => e.Locationid)
+                    .HasName("locations_pkey");
 
-                entity.Property(e => e.Locationid).HasColumnName("locationid");
+                entity.ToTable("locations");
+
+                entity.Property(e => e.Locationid)
+                    .HasColumnName("locationid")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Employees).HasColumnName("employees");
 
@@ -150,14 +172,18 @@ namespace SavvyDB.Entities
                     .HasMaxLength(20);
             });
 
-            modelBuilder.Entity<Manager>(entity =>
+            modelBuilder.Entity<Managers>(entity =>
             {
-                entity.ToTable("manager");
+                entity.HasKey(e => e.Managerid)
+                    .HasName("managers_pkey");
 
-                entity.Property(e => e.Managerid).HasColumnName("managerid");
+                entity.ToTable("managers");
+
+                entity.Property(e => e.Managerid)
+                    .HasColumnName("managerid")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Email)
-                    .IsRequired()
                     .HasColumnName("email")
                     .HasMaxLength(40);
 
@@ -173,55 +199,58 @@ namespace SavvyDB.Entities
                 entity.Property(e => e.Locationid).HasColumnName("locationid");
 
                 entity.HasOne(d => d.Location)
-                    .WithMany(p => p.Manager)
+                    .WithMany(p => p.Managers)
                     .HasForeignKey(d => d.Locationid)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("manager_locationid_fkey");
+                    .HasConstraintName("managers_locationid_fkey");
             });
 
-            modelBuilder.Entity<OrderItem>(entity =>
+            modelBuilder.Entity<OrderItems>(entity =>
             {
-                entity.ToTable("order_item");
+                entity.HasKey(e => e.Orderitemid)
+                    .HasName("order_items_pkey");
 
-                entity.Property(e => e.OrderItemId)
-                    .HasColumnName("order_item_id")
+                entity.ToTable("order_items");
+
+                entity.Property(e => e.Orderitemid)
+                    .HasColumnName("orderitemid")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.OrderId).HasColumnName("order_id");
+                entity.Property(e => e.Orderid).HasColumnName("orderid");
 
-                entity.Property(e => e.ProductId).HasColumnName("product_id");
+                entity.Property(e => e.Productid).HasColumnName("productid");
 
                 entity.HasOne(d => d.Order)
-                    .WithMany(p => p.OrderItem)
-                    .HasForeignKey(d => d.OrderId)
+                    .WithMany(p => p.OrderItems)
+                    .HasForeignKey(d => d.Orderid)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("order_item_order_id_fkey");
+                    .HasConstraintName("order_items_orderid_fkey");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany(p => p.OrderItem)
-                    .HasForeignKey(d => d.ProductId)
+                    .WithMany(p => p.OrderItems)
+                    .HasForeignKey(d => d.Productid)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("order_item_product_id_fkey");
+                    .HasConstraintName("order_items_productid_fkey");
             });
 
             modelBuilder.Entity<Orders>(entity =>
             {
-                entity.HasKey(e => e.OrderId)
+                entity.HasKey(e => e.Orderid)
                     .HasName("orders_pkey");
 
                 entity.ToTable("orders");
 
-                entity.Property(e => e.OrderId)
-                    .HasColumnName("order_id")
+                entity.Property(e => e.Orderid)
+                    .HasColumnName("orderid")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.Custid).HasColumnName("custid");
+                entity.Property(e => e.Customerid).HasColumnName("customerid");
 
-                entity.HasOne(d => d.Cust)
+                entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.Custid)
+                    .HasForeignKey(d => d.Customerid)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("orders_custid_fkey");
+                    .HasConstraintName("orders_customerid_fkey");
             });
 
             modelBuilder.Entity<PgStatStatements>(entity =>
@@ -288,19 +317,17 @@ namespace SavvyDB.Entities
 
                 entity.ToTable("products");
 
-                entity.Property(e => e.Productid).HasColumnName("productid");
+                entity.Property(e => e.Productid)
+                    .HasColumnName("productid")
+                    .ValueGeneratedNever();
 
-                entity.Property(e => e.Description)
-                    .HasColumnName("description")
-                    .HasMaxLength(20);
-
-                entity.Property(e => e.Productcost)
-                    .HasColumnName("productcost")
+                entity.Property(e => e.Cost)
+                    .HasColumnName("cost")
                     .HasColumnType("numeric(6,2)");
 
                 entity.Property(e => e.Productname)
                     .HasColumnName("productname")
-                    .HasMaxLength(20);
+                    .HasMaxLength(40);
             });
 
             OnModelCreatingPartial(modelBuilder);

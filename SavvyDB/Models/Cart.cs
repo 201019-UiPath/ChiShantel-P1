@@ -3,7 +3,7 @@ namespace SavvyDB.Models
 {
     public class Cart
     {
-     public int cartid {get; set;}
-     public int custid {get; set;} 
+     public int CartId {get; set;}
+     public int CustomerId {get; set;} 
     }
 }

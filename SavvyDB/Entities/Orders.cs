@@ -1,16 +1,19 @@
-﻿using System.Collections.Generic;
-namespace SavvyDB.Entities
+﻿using System;
+using System.Collections.Generic;
 
+namespace SavvyDB.Entities
 {
     public partial class Orders
     {
         public Orders()
         {
-            OrderItem = new HashSet<OrderItem>();
+            OrderItems = new HashSet<OrderItems>();
         }
-        public int OrderId { get; set; }
-        public int Custid { get; set; }
-        public virtual Customer Cust { get; set; }
-        public virtual ICollection<OrderItem> OrderItem { get; set; }
+
+        public int Orderid { get; set; }
+        public int Customerid { get; set; }
+
+        public virtual Customers Customer { get; set; }
+        public virtual ICollection<OrderItems> OrderItems { get; set; }
     }
 }

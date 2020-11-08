@@ -7,7 +7,7 @@ namespace SavvyDB.Mappers
     {
          Customer ParseCustomer(Customers Customer);
          Customers ParseCustomer (Customer Customer);
-         ICollection<Customer> ParseCustomer(List<Customers> Customer);
-         List<Customers> ParseCustomer(ICollection<Customer> Customer);
+         ICollection<Customers> ParseCustomer(List<Customer> Customer);
+         List<Customer> ParseCustomer(ICollection<Customers> Customer);
     }
 }

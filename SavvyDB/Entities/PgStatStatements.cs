@@ -1,5 +1,7 @@
-﻿namespace SavvyDB.Entities
+﻿using System;
+using System.Collections.Generic;
 
+namespace SavvyDB.Entities
 {
     public partial class PgStatStatements
     {
