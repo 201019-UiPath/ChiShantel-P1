@@ -3,8 +3,6 @@ using SavvyDB.Models;
 using System.Linq;
 using SavvyDB.Entities;
 using SavvyDB.Mappers;
-using Microsoft.EntityFrameworkCore;
-using SavvyDB.Repos;
 
 namespace SavvyDB
 {
@@ -19,26 +17,22 @@ namespace SavvyDB
             this.mapper = mapper;
         }
 
-        public List<SavvyDB.Models.Inventory> GetProductsByLocation(int id)
+        public SavvyDB.Models.Inventory GetProductsByLocation(int id)
         {
             return mapper.ParseInventory(
                 context.Inventory
-                .Include("Name")
-                .Where(x => x.LocationId == id)
-                .ToList()
-            );
+                .First(p => p.InventoryId == id));
         }
         public void AddCustomer(Customers Customer)
         {
             context.Customer.Add(mapper.ParseCustomer(Customer));
             context.SaveChanges();
         }
-        public List<Customers> GetCustomer(int id)
+        public Customers GetCustomer(int id)
         {
             return mapper.ParseCustomer(
-                    context.Customer
-                    .Where(x => x.Custid == id)
-                    .ToList());
+                context.Customer
+                .First(p => p.Custid == id));
         }
         public List<Customers> GetAllCustomers(Customers Customer)
         {
@@ -53,12 +47,11 @@ namespace SavvyDB
             context.SaveChanges();
         }
 
-        public List<Models.Cart> GetCart(int id)
+        public Models.Cart GetCart(int id)
         {
             return mapper.ParseCart(
                 context.Cart
-                .Where(x => x.CartId == id)
-                .ToList());
+                .First(p => p.CartId == id));
         }
 
         public void UpdateCart(SavvyDB.Models.Cart Cart)
@@ -94,9 +87,9 @@ namespace SavvyDB
         public List<SavvyDB.Models.Inventory> GetInventory(int id)
         {
             return mapper.ParseInventory(
-                    context.Inventory
-                    .Where(x => x.LocationId == id)
-                    .ToList());
+                context.Inventory
+                .Where(p => p.LocationId == id)
+                .ToList());
         }
 
         public void UpdateInventory(SavvyDB.Models.Inventory Inventory)
@@ -116,15 +109,14 @@ namespace SavvyDB
             context.Location.Add(mapper.ParseLocation(Location));
             context.SaveChanges();
         }
-        //Select location
-        public List<SavvyDB.Models.Locations> GetLocations()
+        public List<SavvyDB.Models.Locations> GetAllLocations()
         {
             return mapper.ParseLocation(
                 context.Location
                 .ToList()
             );
         }
-        //Select location by id
+
         public Locations GetLocation(int id)
         {
             return mapper.ParseLocation(context.Location
@@ -153,8 +145,7 @@ namespace SavvyDB
         {
             return mapper.ParseManager(
                 context.Manager
-                .Where(x => x.Managerid == id)
-                .ToList());
+                .First(p => p.Managerid == id));
         }
         public List<Managers> GetAllManagers()
         {
@@ -186,8 +177,7 @@ namespace SavvyDB
         {
             return mapper.ParseCartItem(
                 context.CartItem
-                .Where(o => o.CartItemId == id)
-                .ToList());
+                .First(p => p.CartItemId == id));
         }
 
         public void UpdateCartItem(Models.CartItem CartItem)
@@ -212,8 +202,7 @@ namespace SavvyDB
         {
             return mapper.ParseOrderItem(
                 context.OrderItem
-                .Where(o => o.OrderItemId == id)
-                .ToList());
+                .First(p => p.OrderItemId == id));
         }
 
         public void UpdateOrderItem(Models.OrderItem OrderItem)
@@ -234,12 +223,12 @@ namespace SavvyDB
             context.SaveChanges();
         }
 
-        public List<Order> GetOrder(int id)
+        public Order GetOrder(int id)
         {
              return mapper.ParseOrder(
                     context.Orders
-                    .Where(c => c.Custid == id)
-                    .ToList());
+                    .First(c => c.Custid == id));
+
         }
 
         public void UpdateOrder(Order Orders)

@@ -1,26 +1,33 @@
-// using SavvyDB.Models;
-// using SavvyDB;
-// using System.Collections.Generic;
-// using System; 
+using SavvyDB.Models;
+using SavvyDB;
+using System.Collections.Generic;
+using System; 
 
-// namespace SavvyLib
-// {
-//     public class ManagerTask
-//     {
-//         private IManagerRepo repo;
+namespace SavvyLib
+{
+    public class ManagerTask
+    {
+        private SavvyRepo repo;
 
-//         public ManagerTask(IManagerRepo repo)
-//         {
-//             this.repo = repo;
-//         }
-//         /*public void addManager(Manager newManager)
-//         {
-//             repo.AddManager(newManager);
-//         }
-//         public List<Products> GetProducts()
-//         {
-//             Task<List<Products>> getProductsTask = repo.GetProducts;
-//             return getProductsTask.Result;
-//         }*/
-//     }
-// }
+        public ManagerTask(SavvyRepo repo)
+        {
+            this.repo = repo;
+        }
+        public void AddManager(Managers Manager)
+        {
+            repo.AddManager(Manager);
+        }
+        public void GetManager(int id)
+        {
+            repo.GetManager(id);
+        }
+        public void UpdateManager(Managers Manager)
+        {
+            repo.UpdateManager(Manager);
+        }
+        public void RemoveManager(Managers Manager)
+        {
+            repo.DeleteManager(Manager);
+        }
+    }
+}

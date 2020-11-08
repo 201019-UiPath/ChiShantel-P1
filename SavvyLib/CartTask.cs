@@ -1,21 +1,31 @@
-// using SavvyDB;
-// using System.Collections.Generic;
-// using SavvyDB.Models;
-// using System;
+using SavvyDB;
+using SavvyDB.Models;
 
-// namespace SavvyLib
-// {
+namespace SavvyLib
+{
 
-//     public class CartTask
-//     {
-//         private SavvyRepo repo;
-//         public CartTask(SavvyRepo repo)
-//         {
-//             this.repo = repo;
-//         }
-//         public void AddToCart(Cart cart)
-//         {
-//             repo.AddToCart(cart);
-//         }
-//     }
-// }
+    public class CartTask
+    {
+        private SavvyRepo repo;
+        public CartTask(SavvyRepo repo)
+        {
+            this.repo = repo;
+        }
+        public void AddCart(Cart cart)
+        {
+            repo.AddCart(cart);
+        }
+        public void UpdateCart(Cart cart)
+        {
+            repo.UpdateCart(cart);
+        }
+        public void GetCart(int id)
+        {
+            repo.GetCart(id);
+        }
+        public void DeleteCart(Cart cart)
+        {
+            repo.DeleteCart(cart);
+        }
+    }
+}

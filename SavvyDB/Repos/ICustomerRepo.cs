@@ -7,7 +7,7 @@ namespace SavvyDB.Repos
     {
          void AddCustomer(Customers Customer);
          Customers GetCustomer(int id);
-         List<Customers> GetAllCustomers();
+         List<Customers> GetAllCustomers(Customers Customer);
          void UpdateCustomer(Customers Customer);
          void DeleteCustomer (Customers Customer);
     }

@@ -1,4 +1,4 @@
-using System;
+using SavvyDB.Entities;
 using Serilog;
 
 namespace SavvyUI
@@ -8,11 +8,12 @@ namespace SavvyUI
     {
         static void Main(string[] args)
         {
+            SavvyContext context = new SavvyContext();
             Log.Logger = new LoggerConfiguration()
             .WriteTo.File("Logs\\Logtxt.txt")
             .CreateLogger();
-            //Menu mainMenu = new MainMenu();
-            //mainMenu.start();
+            Menu mainMenu = new MainMenu(context);
+            mainMenu.start();
         }
 
     }

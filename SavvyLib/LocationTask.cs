@@ -1,27 +1,31 @@
-// using SavvyDB;
-// using System.Collections.Generic;
-// using SavvyDB.Models;
-// using System;
+using SavvyDB;
+using SavvyDB.Models;
+namespace SavvyLib
 
-// namespace SavvyLib
-// {
-//     public class LocationTask
-//     {
-//         private ILocationRepo repo;
-//         public LocationTask(ILocationRepo repo)
-//         {
-//             this.repo = repo;
-//         }
+{
+    public class LocationTask
+    {
+        private SavvyRepo repo;
+        public LocationTask(SavvyRepo repo)
+        {
+            this.repo = repo;
+        }
 
-//          /*public void AddLocation(Location Location)
-//          {
-//             repo.AddLocation(Location);
-//          }
-//         */
-//         /*public List<Location> GetLocations()
-//         {
-//             List<Location> locations = repo.GetLocations();
-//             return locations;
-//         }*/
-//     }
-// }
+        public void AddLocation(Locations Location)
+        {
+            repo.AddLocation(Location);
+        }
+        public void GetLocation(int id)
+        {
+            repo.GetLocation(id);
+        }
+        public void GetAllLocations()
+        {
+            repo.GetAllLocations();
+        }
+        public void UpdateLocation(Locations Location)
+        {
+            repo.AddLocation(Location);
+        }
+    }
+}

@@ -1,39 +1,31 @@
-// using SavvyDB;
-// using System.Collections.Generic;
-// using SavvyDB.Models;
-// using System;
+using SavvyDB;
+using SavvyDB.Models;
 
-// namespace SavvyLib
-// {
-//     public class CustomerTask
-//     {
-//         private SavvyRepo repo;
-//         public CustomerTask(SavvyRepo repo)
-//         {
-//             this.repo = repo;
-//         }
-//         /*private IQueryable<Customer> GetCustomerById(int id) =>
-//     from o in _context.Customers.AsNoTracking()
-//     where o.Id == id
-//     select o;
+namespace SavvyLib
+{
+    public class CustomerTask
+    {
+        private SavvyRepo repo;
+        public CustomerTask(SavvyRepo repo)
+        {
+            this.repo = repo;
+        }
 
-//     public async Task<Customer> GetById(int id)
-//         {
-//             Customer customer = await (
-//             from o in GetCustomerById(id)
-//             select new Customer
-//         {
-//             CustId = o.Id,
-//         })
-//         .FirstOrDefaultAsync();
-
-//     return Customer;
-//         }*/
-//         public void AddCustomer(Customers customer)
-//          {
-//             repo.AddCustomer(customer);
-//          } 
-        
-       
-//     }
-// }
+        public void AddCustomer(Customers Customer)
+        {
+            repo.AddCustomer(Customer);
+        }
+        public void GetCustomer(int id)
+        {
+            repo.GetCustomer(id);
+        }
+        public void UpdateCustomer(Customers Customer)
+        {
+            repo.UpdateCustomer(Customer);
+        }
+        public void RemoveCustomer(Customers Customer)
+        {
+            repo.DeleteCustomer(Customer);
+        }
+    }
+}
