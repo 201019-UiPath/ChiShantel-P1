@@ -1,9 +1,10 @@
 ﻿using System;
 using SavvyDB.Entities;
+using SavvyUI;
 
 namespace SavvyUI
 {
-    public class MainMenu : Menu
+    public class MainMenu
     {
         private string userInput;
         private CustomerMenu customerMenu;

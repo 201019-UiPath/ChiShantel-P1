@@ -14,7 +14,7 @@ namespace SavvyDB.Entities
 
         public int Productid { get; set; }
         public string Productname { get; set; }
-        public decimal? Cost { get; set; }
+        public decimal Cost { get; set; }
 
         public virtual ICollection<CartItems> CartItems { get; set; }
         public virtual ICollection<Inventories> Inventories { get; set; }

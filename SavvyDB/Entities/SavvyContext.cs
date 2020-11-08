@@ -1,7 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-
+using System.IO;
+using Microsoft.Extensions.Configuration;
 namespace SavvyDB.Entities
 {
     public partial class SavvyContext : DbContext
@@ -25,6 +26,20 @@ namespace SavvyDB.Entities
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<PgStatStatements> PgStatStatements { get; set; }
         public virtual DbSet<Products> Products { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+                var connectionString = configuration.GetConnectionString("SavvyDB");
+                optionsBuilder.UseNpgsql(connectionString);
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -57,9 +72,7 @@ namespace SavvyDB.Entities
 
                 entity.ToTable("cart_items");
 
-                entity.Property(e => e.Cartitemid)
-                    .HasColumnName("cartitemid")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Cartitemid).HasColumnName("cartitemid");
 
                 entity.Property(e => e.Cartid).HasColumnName("cartid");
 
@@ -87,9 +100,7 @@ namespace SavvyDB.Entities
 
                 entity.ToTable("carts");
 
-                entity.Property(e => e.Cartid)
-                    .HasColumnName("cartid")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Cartid).HasColumnName("cartid");
 
                 entity.Property(e => e.Customerid).HasColumnName("customerid");
 
@@ -107,15 +118,15 @@ namespace SavvyDB.Entities
 
                 entity.ToTable("customers");
 
-                entity.Property(e => e.Customerid)
-                    .HasColumnName("customerid")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Customerid).HasColumnName("customerid");
 
                 entity.Property(e => e.Email)
+                    .IsRequired()
                     .HasColumnName("email")
                     .HasMaxLength(40);
 
                 entity.Property(e => e.Fname)
+                    .IsRequired()
                     .HasColumnName("fname")
                     .HasMaxLength(20);
 
@@ -132,9 +143,7 @@ namespace SavvyDB.Entities
 
                 entity.ToTable("inventories");
 
-                entity.Property(e => e.Inventoryid)
-                    .HasColumnName("inventoryid")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Inventoryid).HasColumnName("inventoryid");
 
                 entity.Property(e => e.Locationid).HasColumnName("locationid");
 
@@ -162,9 +171,7 @@ namespace SavvyDB.Entities
 
                 entity.ToTable("locations");
 
-                entity.Property(e => e.Locationid)
-                    .HasColumnName("locationid")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Locationid).HasColumnName("locationid");
 
                 entity.Property(e => e.Employees).HasColumnName("employees");
 
@@ -181,15 +188,15 @@ namespace SavvyDB.Entities
 
                 entity.ToTable("managers");
 
-                entity.Property(e => e.Managerid)
-                    .HasColumnName("managerid")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Managerid).HasColumnName("managerid");
 
                 entity.Property(e => e.Email)
+                    .IsRequired()
                     .HasColumnName("email")
                     .HasMaxLength(40);
 
                 entity.Property(e => e.Fname)
+                    .IsRequired()
                     .HasColumnName("fname")
                     .HasMaxLength(20);
 
@@ -214,9 +221,7 @@ namespace SavvyDB.Entities
 
                 entity.ToTable("order_items");
 
-                entity.Property(e => e.Orderitemid)
-                    .HasColumnName("orderitemid")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Orderitemid).HasColumnName("orderitemid");
 
                 entity.Property(e => e.Orderid).HasColumnName("orderid");
 
@@ -244,9 +249,7 @@ namespace SavvyDB.Entities
 
                 entity.ToTable("orders");
 
-                entity.Property(e => e.Orderid)
-                    .HasColumnName("orderid")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Orderid).HasColumnName("orderid");
 
                 entity.Property(e => e.Customerid).HasColumnName("customerid");
 
@@ -255,12 +258,6 @@ namespace SavvyDB.Entities
                     .HasColumnType("date");
 
                 entity.Property(e => e.Totalprice).HasColumnName("totalprice");
-
-                entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.Customerid)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("orders_customerid_fkey");
             });
 
             modelBuilder.Entity<PgStatStatements>(entity =>
@@ -327,15 +324,14 @@ namespace SavvyDB.Entities
 
                 entity.ToTable("products");
 
-                entity.Property(e => e.Productid)
-                    .HasColumnName("productid")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Productid).HasColumnName("productid");
 
                 entity.Property(e => e.Cost)
                     .HasColumnName("cost")
                     .HasColumnType("numeric(6,2)");
 
                 entity.Property(e => e.Productname)
+                    .IsRequired()
                     .HasColumnName("productname")
                     .HasMaxLength(40);
             });

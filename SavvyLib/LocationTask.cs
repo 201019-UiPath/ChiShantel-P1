@@ -1,5 +1,6 @@
 using SavvyDB;
 using SavvyDB.Models;
+using System.Collections.Generic;
 namespace SavvyLib
 
 {
@@ -15,13 +16,13 @@ namespace SavvyLib
         {
             repo.AddLocation(Location);
         }
-        public void GetLocation(int id)
+        public Location GetLocation(int id)
         {
-            repo.GetLocation(id);
+            return repo.GetLocation(id);
         }
-        public void GetAllLocations()
+        public List<Location> GetAllLocations()
         {
-            repo.GetAllLocations();
+            return repo.GetAllLocations();
         }
         public void UpdateLocation(Location Location)
         {

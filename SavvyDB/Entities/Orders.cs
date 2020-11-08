@@ -15,7 +15,6 @@ namespace SavvyDB.Entities
         public int Totalprice { get; set; }
         public DateTime Date { get; set; }
 
-        public virtual Customers Customer { get; set; }
         public virtual ICollection<OrderItems> OrderItems { get; set; }
     }
 }

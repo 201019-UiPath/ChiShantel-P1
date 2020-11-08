@@ -12,7 +12,6 @@ namespace SavvyUI
     public class CustomerMenu
     {
         private string userInput;
-        private int count = 1;
         private int custID = 1;
         private int productID;
         private SavvyRepo savvyRepo;
@@ -28,7 +27,6 @@ namespace SavvyUI
         }
         public void start()
         {
-            
             do 
             {
                 Console.WriteLine("What would you like to do?");
@@ -48,38 +46,11 @@ namespace SavvyUI
                         Log.Information("Cart Added!");
                         break;
                     case "2":  
-                        List<Cart> carthistory = GetOrderHistory();
-                        Log.Information("Order history viewed!");
-                        foreach (Cart cartitem in carthistory)
-                        {
-                            Console.WriteLine("CustomerID: " + cartitem.Custid);
-                            Console.WriteLine("ProductID: " + cartitem.Productid);
-                            Console.WriteLine("LocationID: "+ cartitem.Locationid);
-                            Console.WriteLine("Quantity: " + cartitem.Quantity + "\n");
-                        }
+                        //OrderHistoryMenu.start();
+                        Log.Information("Cart History Viewed!");
                         break;
                     case "3":
-                        Console.WriteLine("Select a location!");
-                        location = savvyRepo.GetLocations();
-                        count = 1;
-                        foreach (Location singleLocation in location) 
-                        { 
-                            Console.WriteLine("[" + count + "]");
-                            Console.WriteLine(singleLocation.Name);
-                            count ++;
-                        }
-                        userInput = Console.ReadLine();
-
-                        Console.WriteLine("Getting items...");
-
-                        List<SavvyDB.Entities.Inventory> inventory = savvyRepo.GetProducts(Int32.Parse(userInput));
-                        foreach (SavvyDB.Entities.Inventory singleProduct in inventory)
-                        {
-                            Console.WriteLine("Item ID: " + singleProduct.Productid);
-                            Console.WriteLine("Item Quantity: " + singleProduct.Quantity);
-                        }
-                        
-                        //Pull up list of available items          
+                        Console.WriteLine("Nothing yet!");
                         break;
                     case "4":
                         Console.WriteLine("Returning to main menu...");

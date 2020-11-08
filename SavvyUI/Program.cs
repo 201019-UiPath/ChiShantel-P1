@@ -12,7 +12,7 @@ namespace SavvyUI
             Log.Logger = new LoggerConfiguration()
             .WriteTo.File("Logs\\Logtxt.txt")
             .CreateLogger();
-            Menu mainMenu = new MainMenu(context);
+            MainMenu mainMenu = new MainMenu(context);
             mainMenu.start();
         }
 
