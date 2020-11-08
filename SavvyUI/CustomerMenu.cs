@@ -20,9 +20,11 @@ namespace SavvyUI
         private LocationTask locationtask;
         private InventoryTask inventorytask;
         private ProductTask producttask;
+        private ProductMenu productMenu;
         public CustomerMenu(SavvyContext context)
         {
             this.context = context;
+            productMenu = new ProductMenu(context);
         }
         public void start()
         {
@@ -42,49 +44,13 @@ namespace SavvyUI
                 {
                     case "1":
                         
-                        Console.WriteLine("Select a location!");
-                        List<Location> Location = savvyRepo.GetAllLocations();
-                        CartTask cartTask = new CartTask(savvyRepo);
-                        CartItemTask cartItemTask = new CartItemTask(savvyRepo);
-                        Cart cart = new Cart();
-                        count = 1;
-                        foreach (Location singleLocation in Location) 
-                        { 
-                            Console.WriteLine("[" + count + "]");
-                            Console.WriteLine(singleLocation.Name);
-                            count ++;
-                        }
-                        userInput = Console.ReadLine();
-                        int Locationid = Int32.Parse(userInput);
-                        InventoryTask inventorytask = new InventoryTask(savvyRepo);
-
-                        Console.WriteLine("Getting items...");
-                        List<Inventory> Items = inventorytask.GetInventory(Locationid);
-                        foreach (Inventory Item in Items)
-                        {
-                            int id = Item.ProductId;
-                            Product prod = producttask.GetProduct(id);
-                            Console.WriteLine("Product ID: " + prod.ProductId);
-                            Console.WriteLine("Item Name: " + prod.Name);
-                            Console.WriteLine("Cost: " + prod.Cost);
-                        }
-
-                        Console.WriteLine ("Select a product (By ID!)");
-                        userInput = Console.ReadLine();
-                        Product chosenproduct = producttask.GetProduct(Int32.Parse(userInput));
-                        CartItem cartitem = new CartItem();
-                        cartitem.ProductId = chosenproduct.ProductId;
-                        cartitem.CartId = cart.CartId;
-                        CartItemTask.AddCartItem(cartitem); 
-                        userInput = Console.ReadLine();
-                        cart.CustomerId = 1;
-                        cartTask.AddCart(cart);
+                        productMenu.start();
                         Log.Information("Cart Added!");
                         break;
                     case "2":  
-                        List<SavvyDB.Entities.Cart> carthistory = savvyRepo.GetOrderHistory();
+                        List<Cart> carthistory = GetOrderHistory();
                         Log.Information("Order history viewed!");
-                        foreach (SavvyDB.Entities.Cart cartitem in carthistory)
+                        foreach (Cart cartitem in carthistory)
                         {
                             Console.WriteLine("CustomerID: " + cartitem.Custid);
                             Console.WriteLine("ProductID: " + cartitem.Productid);

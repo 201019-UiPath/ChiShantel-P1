@@ -11,7 +11,7 @@ namespace SavvyUI
         public MainMenu(SavvyContext context)
         {
             this.customerMenu = new CustomerMenu(context);
-            this.managerMenu = new managerMenu();
+            //this.managerMenu = new managerMenu(context);
         }
         public void start()
         {

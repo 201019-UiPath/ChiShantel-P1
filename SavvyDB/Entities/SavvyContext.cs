@@ -26,7 +26,6 @@ namespace SavvyDB.Entities
         public virtual DbSet<PgStatStatements> PgStatStatements { get; set; }
         public virtual DbSet<Products> Products { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasPostgresExtension("btree_gin")
@@ -65,6 +64,8 @@ namespace SavvyDB.Entities
                 entity.Property(e => e.Cartid).HasColumnName("cartid");
 
                 entity.Property(e => e.Productid).HasColumnName("productid");
+
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
 
                 entity.HasOne(d => d.Cart)
                     .WithMany(p => p.CartItems)
@@ -220,6 +221,8 @@ namespace SavvyDB.Entities
                 entity.Property(e => e.Orderid).HasColumnName("orderid");
 
                 entity.Property(e => e.Productid).HasColumnName("productid");
+
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderItems)
