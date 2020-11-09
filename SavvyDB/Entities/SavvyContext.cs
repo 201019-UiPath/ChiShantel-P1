@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.IO;
 using Microsoft.Extensions.Configuration;
+
 namespace SavvyDB.Entities
 {
     public partial class SavvyContext : DbContext

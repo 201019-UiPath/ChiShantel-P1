@@ -226,7 +226,8 @@ namespace SavvyDB.Mappers
             {
                 Cartitemid = CartItem.CartItemId,
                 Productid = CartItem.ProductId,
-                Cartid = CartItem.CartId 
+                Cartid = CartItem.CartId, 
+                Quantity=CartItem.Quantity
             };
         }
 
@@ -236,7 +237,8 @@ namespace SavvyDB.Mappers
             {
                 CartItemId = CartItem.Cartitemid,
                 ProductId = CartItem.Productid,
-                CartId = CartItem.Cartid 
+                CartId = CartItem.Cartid, 
+                Quantity = CartItem.Quantity
             };
         }
 
@@ -266,7 +268,8 @@ namespace SavvyDB.Mappers
             {
                 Orderitemid = OrderItem.OrderItemId,
                 Productid = OrderItem.ProductId,
-                Orderid = OrderItem.OrderId 
+                Orderid = OrderItem.OrderId,
+                Quantity = OrderItem.Quantity
             };
         }
 
@@ -276,7 +279,8 @@ namespace SavvyDB.Mappers
             {
                 OrderItemId = OrderItem.Orderitemid,
                 ProductId = OrderItem.Productid,
-                OrderId = OrderItem.Orderid 
+                OrderId = OrderItem.Orderid,
+                Quantity = OrderItem.Quantity
             };
         }
 
@@ -306,6 +310,8 @@ namespace SavvyDB.Mappers
             {
                 Orderid = Order.OrderId,
                 Customerid = Order.CustomerId,
+                Totalprice = Order.Totalprice,
+                Date = Order.Date
             };
         }
 
@@ -314,7 +320,10 @@ namespace SavvyDB.Mappers
             return new Order()
             {
                 OrderId = Order.Orderid,
-                CustomerId = Order.Customerid
+                CustomerId = Order.Customerid,
+                Totalprice = Order.Totalprice,
+                Date = Order.Date
+                
             };
         }
 

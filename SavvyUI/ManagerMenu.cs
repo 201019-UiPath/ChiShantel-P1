@@ -1,17 +1,36 @@
 using System;
-//using SavvyLib;
-//using SavvyDB;
-using System.Collections.Generic;
+using SavvyDB;
+using SavvyDB.Mappers;
+using SavvyDB.Entities;
+using SavvyDB.Models;
+using SavvyLib;
+using Serilog;
 
 namespace SavvyUI
 {
     public class managerMenu
     {
         private string userInput;
-        //private ManagerRepo managerRepo;
-        public managerMenu()
+        private int productID;
+        private SavvyRepo repo;
+        private SavvyContext context;
+        private LocationTask locationtask;
+        private InventoryTask inventorytask;
+        private ProductTask producttask;
+        private ProductMenu productMenu;
+        private OrderTask ordertask;
+        private OrderItemTask orderitemtask;
+
+        private Customer customer;
+
+        public managerMenu(SavvyContext context)
         {
-            
+            this.context = context;
+            this.locationtask = new LocationTask(repo);
+            this.inventorytask = new InventoryTask(repo);
+            this.producttask = new ProductTask(repo);
+            this.ordertask = new OrderTask(repo);
+            this.orderitemtask = new OrderItemTask(repo);
         }
         public void start()
         {

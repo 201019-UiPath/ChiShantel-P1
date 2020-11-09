@@ -25,7 +25,7 @@ namespace SavvyLib
         }
         public Cart GetCartByCustomer(int id)
         {
-            return repo.GetCart(id);
+            return repo.GetCartByCustomer(id);
         }
         public void DeleteCart(Cart cart)
         {

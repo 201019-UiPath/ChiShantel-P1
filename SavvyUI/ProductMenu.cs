@@ -13,7 +13,7 @@ namespace SavvyUI
         private string userInput;
         private Product product;
         SavvyRepo savvyrepo = new SavvyRepo(new SavvyContext(), new DBMapper());
-        private CartTask carttask;
+        private Customer Customer;
         private CustomerTask customertask;
         private InventoryTask inventorytask;
         private CartItemTask cartitemtask;
@@ -23,10 +23,10 @@ namespace SavvyUI
         int count;
 
 
-        public ProductMenu(SavvyContext savvycontext)
+        public ProductMenu(SavvyContext savvycontext, Customer Customer)
         {
             this.context = savvycontext;
-            
+            this.Customer = Customer;
         }
         
         public void start()
@@ -37,6 +37,8 @@ namespace SavvyUI
             CartTask cartTask = new CartTask(savvyrepo);
             CartItemTask cartitemtask = new CartItemTask(savvyrepo);
             ProductTask producttask = new ProductTask(savvyrepo);
+            Cart cart = cartTask.GetCartByCustomer(1);
+
             count = 1;
             foreach (Location singleLocation in Location) 
                 { 
@@ -44,12 +46,15 @@ namespace SavvyUI
                     Console.WriteLine(singleLocation.Name);
                     count ++;
                 }
-                userInput = Console.ReadLine();
-                int Locationid = Int32.Parse(userInput);
-                InventoryTask inventorytask = new InventoryTask(savvyrepo);
+            userInput = Console.ReadLine();
+            int Locationid = Int32.Parse(userInput);
+            InventoryTask inventorytask = new InventoryTask(savvyrepo);
 
-                Console.WriteLine("Getting items...");
-                List<Inventory> Items = inventorytask.GetInventory(Locationid);
+            Console.WriteLine("Getting items...");
+            List<Inventory> Items = inventorytask.GetInventory(Locationid);
+            string continueloop = "y";
+            while (continueloop == "y")
+            {
                 foreach (Inventory Item in Items)
                     {
                         int id = Item.ProductId;
@@ -61,17 +66,20 @@ namespace SavvyUI
                         Console.WriteLine (" ");
                     }
 
-                        Console.WriteLine ("Select a product (By ID!)");
-                        userInput = Console.ReadLine();
-                        Product chosenproduct = producttask.GetProduct(Int32.Parse(userInput));
-                        CartItem cartitem = new CartItem();
-                        cartitem.ProductId = Int32.Parse(userInput);
-                        cartitem.CartId = 1;
-                        Console.WriteLine("How many do you want to buy?");
-                        string input = Console.ReadLine();
-                        cartitem.Quantity = Int32.Parse(input);
-                        cartitemtask.AddCartItem(cartitem); 
-                        Console.WriteLine("Item has been added!");
+                    Console.WriteLine ("Select a product (By ID!)");
+                    userInput = Console.ReadLine();
+                    Product chosenproduct = producttask.GetProduct(Int32.Parse(userInput));
+                    CartItem cartitem = new CartItem();
+                    cartitem.ProductId = Int32.Parse(userInput);
+                    Console.WriteLine("How many do you want to buy?");
+                    string input = Console.ReadLine();
+                    cartitem.CartId = 1;
+                    cartitem.Quantity = Int32.Parse(input);
+                    cartitemtask.UpdateCartItem(cartitem); 
+                    Console.WriteLine("Item has been added!");
+                    Console.WriteLine ("Keep adding to cart? (y/n)");
+                    continueloop = Console.ReadLine();
+            }
         }
     }
 }

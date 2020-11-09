@@ -191,6 +191,14 @@ namespace SavvyDB
                 context.CartItems
                 .First(p => p.Cartitemid == id));
         }
+        public List<CartItem> GetAllCartItems(int id)
+        {
+            return mapper.ParseCartItem(
+                context.CartItems
+                .Where(x => x.Cartid == id)
+                .ToList()
+            );
+        }
 
         public void UpdateCartItem(CartItem CartItem)
         {
@@ -223,23 +231,6 @@ namespace SavvyDB
                 .ToList()
             );
         }
-        public List<OrderItem> GetOrderItemsExpensive(Double num)
-        {
-            throw new System.NotImplementedException();
-        }
-        
-        public List<OrderItem> GetOrderItemsCheap(Double num)
-        {
-            throw new System.NotImplementedException();
-        }
-        public List<OrderItem> GetOrderItemDateEarly(DateTime date)
-        {
-            throw new System.NotImplementedException();
-        }
-        public List<OrderItem> GetOrderItemDateLate(DateTime date)
-        {
-            throw new System.NotImplementedException();
-        }
         public void UpdateOrderItem(OrderItem OrderItem)
         {
             context.OrderItems.Update(mapper.ParseOrderItem(OrderItem));
@@ -262,10 +253,60 @@ namespace SavvyDB
         {
              return mapper.ParseOrder(
                     context.Orders
-                    .First(c => c.Customerid == id));
+                    .First(x => x.Customerid == id));
 
         }
-
+        public List<Order> GetAllOrders()
+        {
+            return mapper.ParseOrder(
+                context.Orders
+                .ToList()
+            );
+        }
+        public Order GetOrderByDate(DateTime date)
+        {
+            return mapper.ParseOrder(
+                context.Orders
+                .First(x => x.Date == date)
+            );
+        }
+                public List<Order> GetOrderExpensive(Customer Customer)
+        {
+            return mapper.ParseOrder(
+                    context.Orders
+                    .Where(x => x.Customerid == Customer.CustomerId)
+                    .OrderByDescending(x => x.Totalprice)
+                    .ToList()
+                );
+        }
+        
+        public List<Order> GetOrderCheap(Customer Customer)
+        {
+            return mapper.ParseOrder(
+                    context.Orders
+                    .Where(x => x.Customerid == Customer.CustomerId)
+                    .OrderBy(x => x.Totalprice)
+                    .ToList()
+                );
+        }
+        public List<Order> GetOrderFirst(DateTime date)
+        {
+            return mapper.ParseOrder(
+                    context.Orders
+                    .Where(x => x.Date == date.Date)
+                    .OrderByDescending(x => x.Date)
+                    .ToList()
+                );
+        }
+        public List<Order> GetOrderLast(DateTime date)
+        {
+            return mapper.ParseOrder(
+                    context.Orders
+                    .Where(x => x.Date == date.Date)
+                    .OrderBy(x => x.Date)
+                    .ToList()
+                );
+        }
         public void UpdateOrder(Order Orders)
         {
             context.Orders.Update(mapper.ParseOrder(Orders));

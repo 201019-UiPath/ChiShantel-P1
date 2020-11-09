@@ -8,7 +8,7 @@ namespace SavvyUI
     {
         private string userInput;
         private CustomerMenu customerMenu;
-        private managerMenu managerMenu;
+        //private ManagerMenu managerMenu;
         public MainMenu(SavvyContext context)
         {
             this.customerMenu = new CustomerMenu(context);
@@ -30,7 +30,7 @@ namespace SavvyUI
                             customerMenu.start();
                             break;
                         case "2":  
-                            managerMenu.start();
+                            //managerMenu.start();
                             break;
                         case "x":
                             Console.WriteLine("We hope to see you again!");            
