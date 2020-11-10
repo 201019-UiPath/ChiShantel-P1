@@ -12,8 +12,7 @@ namespace SavvyUI
     {
         private string userInput;
         private int productID;
-        private SavvyRepo savvyRepo;
-        private SavvyContext context;
+        private SavvyRepo repo;
         private LocationTask locationtask;
         private InventoryTask inventorytask;
         private ProductTask producttask;
@@ -21,11 +20,11 @@ namespace SavvyUI
         private CartMenu cartMenu;
         private Customer customer;
 
-        public CustomerMenu(SavvyContext context)
+        public CustomerMenu(SavvyRepo repo)
         {
-            this.context = context;
-            productMenu = new ProductMenu(context, customer);
-            cartMenu = new CartMenu(context);
+            this.repo = repo;
+            productMenu = new ProductMenu(repo, customer);
+            cartMenu = new CartMenu(repo);
         }
         public void start()
         {
@@ -39,9 +38,8 @@ namespace SavvyUI
                 Console.WriteLine("[4] Check Location Inventory");
                 Console.WriteLine("[5] Go back");
                 userInput = Console.ReadLine();
-                savvyRepo = new SavvyRepo(new SavvyContext(), new DBMapper());
-                locationtask = new LocationTask(savvyRepo);
-                CustomerTask customerTask = new CustomerTask(savvyRepo);
+                locationtask = new LocationTask(repo);
+                CustomerTask customerTask = new CustomerTask(repo);
                 switch (userInput) 
                 {
                     case "1":

@@ -1,6 +1,5 @@
 ﻿using System;
-using SavvyDB.Entities;
-using SavvyUI;
+using SavvyDB;
 
 namespace SavvyUI
 {
@@ -8,11 +7,13 @@ namespace SavvyUI
     {
         private string userInput;
         private CustomerMenu customerMenu;
-        //private ManagerMenu managerMenu;
-        public MainMenu(SavvyContext context)
+        private ManagerMenu managerMenu;
+        private SavvyRepo repo;
+        public MainMenu(SavvyRepo repo)
         {
-            this.customerMenu = new CustomerMenu(context);
-            //this.managerMenu = new managerMenu(context);
+            this.repo = repo;
+            this.customerMenu = new CustomerMenu(repo);
+            this.managerMenu = new ManagerMenu(repo);
         }
         public void start()
         {
@@ -30,7 +31,7 @@ namespace SavvyUI
                             customerMenu.start();
                             break;
                         case "2":  
-                            //managerMenu.start();
+                            managerMenu.start();
                             break;
                         case "x":
                             Console.WriteLine("We hope to see you again!");            

@@ -4,7 +4,7 @@ using SavvyDB.Entities;
 using SavvyDB.Models;
 using SavvyLib;
 using System.Collections.Generic;
-using SavvyDB.Mappers;
+
 
 namespace SavvyUI
 {
@@ -12,7 +12,7 @@ namespace SavvyUI
     {
         private string userInput;
         private Product product;
-        SavvyRepo savvyrepo = new SavvyRepo(new SavvyContext(), new DBMapper());
+        SavvyRepo repo;
         private Customer Customer;
         private CustomerTask customertask;
         private InventoryTask inventorytask;
@@ -23,20 +23,20 @@ namespace SavvyUI
         int count;
 
 
-        public ProductMenu(SavvyContext savvycontext, Customer Customer)
+        public ProductMenu(SavvyRepo repo, Customer Customer)
         {
-            this.context = savvycontext;
+            this.repo = repo;
             this.Customer = Customer;
         }
         
         public void start()
         {
             Console.WriteLine("Select a location!");
-            LocationTask locationtask = new LocationTask(savvyrepo);
+            LocationTask locationtask = new LocationTask(repo);
             List<Location> Location = locationtask.GetAllLocations();
-            CartTask cartTask = new CartTask(savvyrepo);
-            CartItemTask cartitemtask = new CartItemTask(savvyrepo);
-            ProductTask producttask = new ProductTask(savvyrepo);
+            CartTask cartTask = new CartTask(repo);
+            CartItemTask cartitemtask = new CartItemTask(repo);
+            ProductTask producttask = new ProductTask(repo);
             Cart cart = cartTask.GetCartByCustomer(1);
 
             count = 1;
@@ -48,7 +48,7 @@ namespace SavvyUI
                 }
             userInput = Console.ReadLine();
             int Locationid = Int32.Parse(userInput);
-            InventoryTask inventorytask = new InventoryTask(savvyrepo);
+            InventoryTask inventorytask = new InventoryTask(repo);
 
             Console.WriteLine("Getting items...");
             List<Inventory> Items = inventorytask.GetInventory(Locationid);

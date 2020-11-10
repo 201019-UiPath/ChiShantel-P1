@@ -12,7 +12,6 @@ namespace SavvyUI
         private string userInput;
         private int productID;
         private SavvyRepo repo;
-        private SavvyContext context;
         private LocationTask locationtask;
         private InventoryTask inventorytask;
         private ProductTask producttask;
@@ -21,9 +20,9 @@ namespace SavvyUI
         private OrderTask ordertask;
         private OrderItemTask orderitemtask;
 
-        public CartMenu(SavvyContext context)
+        public CartMenu(SavvyRepo repo)
         {
-            this.context = context;
+            this.repo = repo;
             this.locationtask = new LocationTask(repo);
             this.inventorytask = new InventoryTask(repo);
             this.producttask = new ProductTask(repo);
