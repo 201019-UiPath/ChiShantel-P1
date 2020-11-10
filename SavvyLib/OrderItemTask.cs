@@ -15,9 +15,9 @@ namespace SavvyLib
         {
             repo.AddOrderItem(OrderItem);
         }
-        public void GetOrderItem(int id)
+        public OrderItem GetOrderItem(int id)
         {
-            repo.GetOrderItem(id);
+            return repo.GetOrderItem(id);
         }
         public void UpdateOrderItem(OrderItem OrderItem)
         {

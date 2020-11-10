@@ -5,6 +5,6 @@ namespace SavvyDB.Models
     {
      public int LocationId {get; set;}
      public string Name {get; set;}
-     public int? Employees {get; set;}
+     public int Employees {get; set;}
     }
 }

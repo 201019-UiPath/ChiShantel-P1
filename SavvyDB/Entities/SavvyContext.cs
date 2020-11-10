@@ -41,7 +41,6 @@ namespace SavvyDB.Entities
                 optionsBuilder.UseNpgsql(connectionString);
             }
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasPostgresExtension("btree_gin")
@@ -222,7 +221,9 @@ namespace SavvyDB.Entities
 
                 entity.ToTable("order_items");
 
-                entity.Property(e => e.Orderitemid).HasColumnName("orderitemid");
+                entity.Property(e => e.Orderitemid)
+                    .HasColumnName("orderitemid")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Orderid).HasColumnName("orderid");
 
@@ -258,7 +259,15 @@ namespace SavvyDB.Entities
                     .HasColumnName("date")
                     .HasColumnType("date");
 
-                entity.Property(e => e.Totalprice).HasColumnName("totalprice");
+                entity.Property(e => e.Totalprice)
+                    .HasColumnName("totalprice")
+                    .HasColumnType("numeric(6,2)");
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.Customerid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("orders_customerid_fkey");
             });
 
             modelBuilder.Entity<PgStatStatements>(entity =>

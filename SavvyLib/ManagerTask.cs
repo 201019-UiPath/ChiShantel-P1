@@ -16,9 +16,9 @@ namespace SavvyLib
         {
             repo.AddManager(Manager);
         }
-        public void GetManager(int id)
+        public Manager GetManager(int id)
         {
-            repo.GetManager(id);
+            return repo.GetManager(id);
         }
         public void UpdateManager(Manager Manager)
         {

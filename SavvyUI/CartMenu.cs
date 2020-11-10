@@ -84,8 +84,9 @@ namespace SavvyUI
                             orderitemtask.AddOrderItem(orderitem);
                             cartitemtask.DeleteCartItem(cartitem);
 
-                            //Inventory Inventory = InventoryTask.GetInventory()
                         }
+                        order.Totalprice = total;
+                        ordertask.UpdateOrder(neworder);
                         break;
 
                 }

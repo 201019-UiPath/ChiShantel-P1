@@ -6,7 +6,7 @@ namespace SavvyLib
 {
     public class InventoryTask
     {
-                private SavvyRepo repo;
+        private SavvyRepo repo;
         public InventoryTask(SavvyRepo repo)
         {
             this.repo = repo;

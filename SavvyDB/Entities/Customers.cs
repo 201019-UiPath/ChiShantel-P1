@@ -8,6 +8,7 @@ namespace SavvyDB.Entities
         public Customers()
         {
             Carts = new HashSet<Carts>();
+            Orders = new HashSet<Orders>();
         }
 
         public int Customerid { get; set; }
@@ -16,5 +17,6 @@ namespace SavvyDB.Entities
         public string Email { get; set; }
 
         public virtual ICollection<Carts> Carts { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

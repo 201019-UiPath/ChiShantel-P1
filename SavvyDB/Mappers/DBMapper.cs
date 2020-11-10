@@ -189,7 +189,8 @@ namespace SavvyDB.Mappers
             return new Location()
             {
                 Name = Location.Name,
-                LocationId = Location.Locationid
+                LocationId = Location.Locationid,
+                Employees = Location.Employees
             };
         }
         public Locations ParseLocation(Location Location)
@@ -197,7 +198,8 @@ namespace SavvyDB.Mappers
             return new Locations()
             {
                 Name = Location.Name,
-                Locationid = Location.LocationId
+                Locationid = Location.LocationId,
+                Employees = Location.Employees
             };
         }
  

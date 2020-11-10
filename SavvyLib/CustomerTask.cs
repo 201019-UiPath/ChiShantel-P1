@@ -15,9 +15,9 @@ namespace SavvyLib
         {
             repo.AddCustomer(Customer);
         }
-        public void GetCustomer(int id)
+        public Customer GetCustomer(int id)
         {
-            repo.GetCustomer(id);
+            return repo.GetCustomer(id);
         }
         public void UpdateCustomer(Customer Customer)
         {
