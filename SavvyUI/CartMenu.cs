@@ -1,17 +1,17 @@
 using System;
 using SavvyDB;
 using SavvyDB.Entities;
+using SavvyDB.Mappers;
 using SavvyDB.Models;
 using SavvyLib;
 using System.Collections.Generic;
-using SavvyDB.Mappers;
 namespace SavvyUI
 {
     public class CartMenu
     {
         private string userInput;
-        private int productID;
         private SavvyRepo repo;
+        private Order order;
         private LocationTask locationtask;
         private InventoryTask inventorytask;
         private ProductTask producttask;
@@ -20,9 +20,11 @@ namespace SavvyUI
         private OrderTask ordertask;
         private OrderItemTask orderitemtask;
 
-        public CartMenu(SavvyRepo repo)
+        public CartMenu()
         {
-            this.repo = repo;
+            SavvyContext context = new SavvyContext();
+            DBMapper mapper = new DBMapper();
+            this.repo = new SavvyRepo(context, mapper);
             this.locationtask = new LocationTask(repo);
             this.inventorytask = new InventoryTask(repo);
             this.producttask = new ProductTask(repo);
@@ -33,6 +35,7 @@ namespace SavvyUI
         }
         public void start()
         {
+            List<CartItem> items = cartitemtask.GetAllCartItems(1);
             do
             {
                 Console.WriteLine("What would you like to do?");
@@ -44,8 +47,6 @@ namespace SavvyUI
                 switch (userInput)
                 {
                     case "1":
-                
-                        List<CartItem> items = cartitemtask.GetAllCartItems(1);
                         
                         foreach (CartItem Item in items)
                         {
@@ -58,7 +59,6 @@ namespace SavvyUI
 
                     case "2":
 
-                        List<CartItem> Items = cartitemtask.GetAllCartItems(1);
                         Cart cart = carttask.GetCart(1);
                         Order order = new Order();
                         decimal total = 0;
@@ -69,14 +69,14 @@ namespace SavvyUI
                         Console.WriteLine("Thank you for placing an order!");
 
 
-                        foreach (CartItem cartitem in Items)
+                        foreach (CartItem cartitem in items)
                         {
                             Product product = producttask.GetProduct(cartitem.ProductId);
 
                             OrderItem orderitem = new OrderItem();
-                            orderitem.OrderId = neworder.OrderId;
                             orderitem.ProductId = cartitem.ProductId;
                             orderitem.Quantity = cartitem.Quantity;
+                            orderitem.OrderId = neworder.OrderId;
 
                             decimal itemprice = product.Cost;
                             total += (itemprice * cartitem.Quantity);
@@ -85,13 +85,13 @@ namespace SavvyUI
                             cartitemtask.DeleteCartItem(cartitem);
 
                         }
-                        order.Totalprice = total;
+                        neworder.Totalprice = total;
                         ordertask.UpdateOrder(neworder);
                         break;
 
                 }
             }
-            while (!userInput.Equals("4"));
+            while (!userInput.Equals("3"));
         }
     }
 }

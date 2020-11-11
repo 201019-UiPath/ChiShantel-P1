@@ -2,6 +2,7 @@ using System;
 using SavvyDB;
 using SavvyDB.Entities;
 using SavvyDB.Models;
+using SavvyDB.Mappers;
 using SavvyLib;
 using System.Collections.Generic;
 
@@ -11,21 +12,13 @@ namespace SavvyUI
     public class ProductMenu
     {
         private string userInput;
-        private Product product;
         SavvyRepo repo;
         private Customer Customer;
-        private CustomerTask customertask;
-        private InventoryTask inventorytask;
-        private CartItemTask cartitemtask;
-        private LocationTask locationtask;
-        private ProductTask producttask;
-        private SavvyContext context;
         int count;
 
-
-        public ProductMenu(SavvyRepo repo, Customer Customer)
+        public ProductMenu(SavvyContext context, DBMapper mapper, Customer Customer)
         {
-            this.repo = repo;
+            this.repo = new SavvyRepo(context, mapper);
             this.Customer = Customer;
         }
         
@@ -51,7 +44,7 @@ namespace SavvyUI
             InventoryTask inventorytask = new InventoryTask(repo);
 
             Console.WriteLine("Getting items...");
-            List<Inventory> Items = inventorytask.GetInventory(Locationid);
+            List<Inventory> Items = inventorytask.GetInventoryByLocation(Locationid);
             string continueloop = "y";
             while (continueloop == "y")
             {

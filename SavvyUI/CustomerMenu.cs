@@ -11,20 +11,19 @@ namespace SavvyUI
     public class CustomerMenu
     {
         private string userInput;
-        private int productID;
+        Customer customer;
         private SavvyRepo repo;
         private LocationTask locationtask;
-        private InventoryTask inventorytask;
-        private ProductTask producttask;
         private ProductMenu productMenu;
+        private OrderHistoryMenu orderhistorymenu;
         private CartMenu cartMenu;
-        private Customer customer;
 
-        public CustomerMenu(SavvyRepo repo)
+        public CustomerMenu(SavvyContext context, DBMapper mapper)
         {
-            this.repo = repo;
-            productMenu = new ProductMenu(repo, customer);
-            cartMenu = new CartMenu(repo);
+            this.repo = new SavvyRepo(context, mapper);
+            productMenu = new ProductMenu(context, mapper, customer);
+            cartMenu = new CartMenu();
+            //orderhistorymenu = new OrderHistoryMenu(context, mapper);
         }
         public void start()
         {
@@ -48,7 +47,7 @@ namespace SavvyUI
                         Log.Information("Cart Added!");
                         break;
                     case "2":  
-                        //OrderHistoryMenu.start();
+                        orderhistorymenu.start();
                         Log.Information("Cart History Viewed!");
                         break;
                     case "3":
@@ -66,7 +65,7 @@ namespace SavvyUI
                         break;
                     }
             }
-            while (!userInput.Equals("4"));
+            while (!userInput.Equals("5"));
         }
     }
 }

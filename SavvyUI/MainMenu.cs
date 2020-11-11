@@ -1,5 +1,7 @@
 ﻿using System;
 using SavvyDB;
+using SavvyDB.Entities;
+using SavvyDB.Mappers;
 
 namespace SavvyUI
 {
@@ -9,11 +11,10 @@ namespace SavvyUI
         private CustomerMenu customerMenu;
         private ManagerMenu managerMenu;
         private SavvyRepo repo;
-        public MainMenu(SavvyRepo repo)
+        public MainMenu(SavvyContext context, DBMapper mapper)
         {
-            this.repo = repo;
-            this.customerMenu = new CustomerMenu(repo);
-            this.managerMenu = new ManagerMenu(repo);
+            this.customerMenu = new CustomerMenu(context, mapper);
+            this.managerMenu = new ManagerMenu(new SavvyRepo(context, mapper));
         }
         public void start()
         {

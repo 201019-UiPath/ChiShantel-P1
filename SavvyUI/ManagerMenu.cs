@@ -11,6 +11,7 @@ namespace SavvyUI
     public class ManagerMenu
     {
         private string userInput;
+        private string locationstring;
         private int productID;
         private int count;
         private SavvyRepo repo;
@@ -36,54 +37,71 @@ namespace SavvyUI
         {
             do 
             {
+                Console.WriteLine("Select a location!");
+                List<Location> Location = locationtask.GetAllLocations();
+                count = 1;
+                foreach (Location singlelocation in Location)
+                    {
+                        Console.WriteLine("[" + count + "]");
+                        Console.WriteLine(singlelocation.Name);
+                        count ++;
+                    }
+                locationstring = Console.ReadLine();
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("[1] Check Inventory");
                 Console.WriteLine("[2] Replenish Inventory");
                 Console.WriteLine("[3] Go Back");
                 userInput = Console.ReadLine();
+                int Locationid = Int32.Parse(locationstring);
+                List<Inventory> Items = inventorytask.GetInventoryByLocation(Locationid);
                 switch (userInput) 
                 {
                     case "1":
-                        //Select location and pulls up inventory
-                        Console.WriteLine("Select a location!");
-                        List<Location> Location = locationtask.GetAllLocations();
-                        count = 1;
-                        foreach (Location singlelocation in Location)
-                        {
-                            Console.WriteLine("[" + count + "]");
-                            Console.WriteLine(singlelocation.Name);
-                            count ++;
-                        }
-                        userInput = Console.ReadLine();
-                        int Locationid = Int32.Parse(userInput);
+                        //Pulls up inventory for selected location
+                        
                         Console.WriteLine("Getting items...");
-                        List<Inventory> Items = inventorytask.GetInventory(Locationid);
                         foreach (Inventory Item in Items)
                             {
                                 int id = Item.ProductId;
                                 Product prod = producttask.GetProduct(id);
                                 Console.WriteLine("Product ID: " + id);
                                 Console.WriteLine("Item Name: " + prod.Name);
-                                Console.WriteLine("Cost: " + prod.Cost);
                                 Console.WriteLine("Quantity: "+ Item.Quantity);
                                 Console.WriteLine (" ");
                             }
                         break;
                     case "2":  
-                        //Select Location 
-                        //Pulls up inventory
-                        break;
-                    case "3":
-                       //Select location 
-                       //Pulls up location inventory           
-                        break;
-                    case "4":
-                        //Select location
-                        //Add item or select existing item
-                        //Add number to add to inventory 
-                        break;
-                    case "5":
-                        Console.WriteLine("Returning to main menu...");
+                        //Replenishes inventory
+                        Console.WriteLine("Getting items...");
+                        foreach (Inventory Item in Items)
+                            {
+                                int id = Item.ProductId;
+                                Product prod = producttask.GetProduct(id);
+                                Console.WriteLine("Product ID: " + id);
+                                Console.WriteLine("Item Name: " + prod.Name);
+                                Console.WriteLine("Quantity: "+ Item.Quantity);
+                                Console.WriteLine (" ");
+                            }
+                        Console.WriteLine("Select an item (by ID)");
+                        userInput = Console.ReadLine();
+                        List<Inventory> inv = inventorytask.GetInventoryByLocation(Locationid);
+                        Console.WriteLine("How much of this item is now in stock?");
+                        string newquantity = Console.ReadLine();
+                        foreach (Inventory item in inv)
+                        {
+                            if (item.ProductId == Int32.Parse(userInput))
+                            {
+                                
+                                Inventory updatedinv = inventorytask.GetInventory(item.InventoryId);
+                                updatedinv.Quantity = Int32.Parse(newquantity);
+                                inventorytask.UpdateInventory(updatedinv);
+                                Console.WriteLine("Item has been restocked!");
+                            }
+                        }
+                        
+                        
+                        
+                        
                         break;
                     default:
                         //invalid input message;

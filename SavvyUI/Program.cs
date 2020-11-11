@@ -12,11 +12,10 @@ namespace SavvyUI
         {
             SavvyContext context = new SavvyContext();
             DBMapper mapper = new DBMapper();
-            SavvyRepo repo = new SavvyRepo(context, mapper);
             Log.Logger = new LoggerConfiguration()
             .WriteTo.File("Logs\\Logtxt.txt")
             .CreateLogger();
-            MainMenu mainMenu = new MainMenu(repo);
+            MainMenu mainMenu = new MainMenu(context, mapper);
             mainMenu.start();
         }
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyUI\\SavvyUI.csproj": {}
+    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\savvyui\\SavvyUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj": {
+    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\SavvyDB\\SavvyDB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj",
+        "projectUniqueName": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\SavvyDB\\SavvyDB.csproj",
         "projectName": "SavvyDB",
-        "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj",
+        "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\SavvyDB\\SavvyDB.csproj",
         "packagesPath": "C:\\Users\\Ckat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\obj\\",
+        "outputPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\SavvyDB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ckat\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -78,14 +78,14 @@
         }
       }
     },
-    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\Savvylib\\SavvyLib.csproj": {
+    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\Savvylib\\SavvyLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\Savvylib\\SavvyLib.csproj",
+        "projectUniqueName": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\Savvylib\\SavvyLib.csproj",
         "projectName": "SavvyLib",
-        "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\Savvylib\\SavvyLib.csproj",
+        "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\Savvylib\\SavvyLib.csproj",
         "packagesPath": "C:\\Users\\Ckat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\Savvylib\\obj\\",
+        "outputPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\Savvylib\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ckat\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -101,8 +101,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj": {
-                "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj"
+              "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\SavvyDB\\SavvyDB.csproj": {
+                "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\SavvyDB\\SavvyDB.csproj"
               }
             }
           }
@@ -156,14 +156,14 @@
         }
       }
     },
-    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyUI\\SavvyUI.csproj": {
+    "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\savvyui\\SavvyUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyUI\\SavvyUI.csproj",
+        "projectUniqueName": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\savvyui\\SavvyUI.csproj",
         "projectName": "SavvyUI",
-        "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyUI\\SavvyUI.csproj",
+        "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\savvyui\\SavvyUI.csproj",
         "packagesPath": "C:\\Users\\Ckat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyUI\\obj\\",
+        "outputPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\savvyui\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ckat\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -179,11 +179,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj": {
-                "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\SavvyDB\\SavvyDB.csproj"
+              "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\SavvyDB\\SavvyDB.csproj": {
+                "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\SavvyDB\\SavvyDB.csproj"
               },
-              "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\Savvylib\\SavvyLib.csproj": {
-                "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P0\\Savvylib\\SavvyLib.csproj"
+              "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\Savvylib\\SavvyLib.csproj": {
+                "projectPath": "C:\\Users\\Ckat\\Documents\\Work\\ChiShantel-P1\\Savvylib\\SavvyLib.csproj"
               }
             }
           }
