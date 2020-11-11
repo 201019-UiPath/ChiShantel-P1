@@ -39,8 +39,10 @@ namespace SavvyDB.Entities
 
                 var connectionString = configuration.GetConnectionString("SavvyDB");
                 optionsBuilder.UseNpgsql(connectionString);
+                optionsBuilder.EnableSensitiveDataLogging();
             }
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasPostgresExtension("btree_gin")
@@ -221,9 +223,7 @@ namespace SavvyDB.Entities
 
                 entity.ToTable("order_items");
 
-                entity.Property(e => e.Orderitemid)
-                    .HasColumnName("orderitemid")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Orderitemid).HasColumnName("orderitemid");
 
                 entity.Property(e => e.Orderid).HasColumnName("orderid");
 

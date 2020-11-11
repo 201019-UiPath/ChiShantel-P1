@@ -152,6 +152,7 @@ namespace SavvyDB.Mappers
         {
             return new Inventories()
             {
+                Inventoryid = Inventory.InventoryId,
                 Locationid = Inventory.LocationId,
                 Productid = Inventory.ProductId,
                 Quantity = Inventory.Quantity
@@ -161,6 +162,7 @@ namespace SavvyDB.Mappers
         {
             return new Inventory()
             {
+                InventoryId = Inventory.Inventoryid,
                 LocationId = Inventory.Locationid,
                 ProductId = Inventory.Productid,
                 Quantity = Inventory.Quantity

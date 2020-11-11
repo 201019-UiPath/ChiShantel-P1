@@ -4,6 +4,7 @@ using SavvyDB.Models;
 using System.Linq;
 using SavvyDB.Entities;
 using SavvyDB.Mappers;
+using Microsoft.EntityFrameworkCore;
 
 namespace SavvyDB
 {
@@ -16,6 +17,7 @@ namespace SavvyDB
         {
             this.context = context;
             this.mapper = mapper;
+            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
         public Inventory GetProductsByLocation(int id)
@@ -42,7 +44,7 @@ namespace SavvyDB
                 .ToList()
             );
         }
-                public void UpdateCustomer(Customer Customer)
+        public void UpdateCustomer(Customer Customer)
         {
             context.Customers.Update(mapper.ParseCustomer(Customer));
             context.SaveChanges();
@@ -96,14 +98,20 @@ namespace SavvyDB
             context.SaveChanges();
         }
 
-        public List<Inventory> GetInventory(int id)
+        public List<Inventory> GetInventoryByLocation(int id)
         {
             return mapper.ParseInventory(
                 context.Inventories
-                .Where(p => p.Locationid == id)
+                .Where(x => x.Locationid == id)
                 .ToList());
         }
-
+        public Inventory GetInventory(int id)
+        {
+            return mapper.ParseInventory(
+                context.Inventories
+                .First(x => x.Inventoryid ==id)
+            );
+        }
         public void UpdateInventory(Inventory Inventory)
         {
             context.Inventories.Update(mapper.ParseInventory(Inventory));

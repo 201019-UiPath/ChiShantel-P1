@@ -16,7 +16,11 @@ namespace SavvyLib
         {
             repo.AddInventory(Inventory);
         }
-        public List<Inventory> GetInventory(int id)
+        public List<Inventory> GetInventoryByLocation(int id)
+        {
+            return repo.GetInventoryByLocation(id);
+        }
+        public Inventory GetInventory(int id)
         {
             return repo.GetInventory(id);
         }
