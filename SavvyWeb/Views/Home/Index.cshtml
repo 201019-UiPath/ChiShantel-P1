@@ -1,0 +1,25 @@
+﻿@model ICollection<SavvyDB.Models.Product>
+@{ 
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+<h1 class="display-4">Savvy Stationery </h1>
+@{foreach (var Product in Model)
+    {
+    <ul>
+      <li> @Product.Productid @Product.Cost @Product.Name</li>
+    </ul>
+    }
+}
+@{ foreach (var Product in Model)
+    {
+        <ul>
+            <li> </li>
+        </ul>
+    }
+}
+</div>
+
+
+

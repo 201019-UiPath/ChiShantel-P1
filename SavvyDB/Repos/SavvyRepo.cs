@@ -20,11 +20,12 @@ namespace SavvyDB
             context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public Inventory GetProductsByLocation(int id)
+        public List<Inventory> GetProductsByLocation(int id)
         {
             return mapper.ParseInventory(
                 context.Inventories
-                .First(p => p.Inventoryid == id));
+                .Where(x => x.Locationid == id)
+                .ToList());
         }
         public void AddCustomer(Customer Customer)
         {

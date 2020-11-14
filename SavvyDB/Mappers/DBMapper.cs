@@ -84,6 +84,7 @@ namespace SavvyDB.Mappers
         {
             return new Products()
             {
+                Productid = Product.Productid,
                 Productname = Product.Name,
                 Cost = Product.Cost
             };
@@ -92,6 +93,7 @@ namespace SavvyDB.Mappers
         {
             return new Product()
             {
+                Productid = Product.Productid,
                 Name = Product.Productname,
                 Cost = Product.Cost
             };

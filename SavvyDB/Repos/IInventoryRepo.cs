@@ -7,6 +7,7 @@ namespace SavvyDB.Repos
     {
        void AddInventory(Inventory Inventory);
        List<Inventory> GetInventoryByLocation(int id);
+       List <Inventory> GetProductsByLocation(int id);
        Inventory GetInventory(int id);
        void UpdateInventory(Inventory Inventory);
        void DeleteInventory(Inventory Inventory);
