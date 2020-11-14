@@ -32,6 +32,7 @@ namespace SavvyWeb
             services.AddDbContext<SavvyContext>(options=>options.UseNpgsql(Configuration.GetConnectionString("SavvyDB")));
             services.AddScoped<IProductsRepo, SavvyRepo>();
             services.AddScoped<IInventoryRepo, SavvyRepo>();
+            services.AddScoped<ICartRepo, SavvyRepo>();
             services.AddScoped<IRepo, SavvyRepo>();
             services.AddScoped<IMapper, DBMapper>();
         }

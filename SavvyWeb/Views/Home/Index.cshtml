@@ -5,20 +5,13 @@
 
 <div class="text-center">
 <h1 class="display-4">Savvy Stationery </h1>
-@{foreach (var Product in Model)
+<div class="Introduction"> Welcome to Savvy Stationary! Browse our selection of wonderful goodies!</div>
+@*@{foreach (var Product in Model)
     {
-    <ul>
-      <li> @Product.Productid @Product.Cost @Product.Name</li>
-    </ul>
+       @Product.Productid @Product.Cost @Product.Name
     }
 }
-@{ foreach (var Product in Model)
-    {
-        <ul>
-            <li> </li>
-        </ul>
-    }
-}
+*@
 </div>
 
 
