@@ -14,7 +14,7 @@ using SavvyDB;
 using SavvyDB.Mappers;
 using SavvyDB.Repos;
 
-namespace SavvyWeb
+namespace SavvyAPI
 {
     public class Startup
     {
@@ -33,6 +33,7 @@ namespace SavvyWeb
             services.AddScoped<IProductsRepo, SavvyRepo>();
             services.AddScoped<IInventoryRepo, SavvyRepo>();
             services.AddScoped<ICartRepo, SavvyRepo>();
+            services.AddScoped<ICartItemRepo, SavvyRepo>();
             services.AddScoped<IRepo, SavvyRepo>();
             services.AddScoped<IMapper, DBMapper>();
         }

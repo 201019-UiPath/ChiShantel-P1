@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SavvyDB;
 
-namespace SavvyWeb
+namespace SavvyAPI.Controllers
 {
+    [Route("[controller]")]
+    [ApiController]
     public class LocationController : Controller
     {
+
         private readonly IRepo _repo;
         private int id;
         public LocationController(IRepo repo)
@@ -21,10 +24,6 @@ namespace SavvyWeb
             var Product = _repo.GetAllProducts();
             return View(Product);
         }
-        public IActionResult GetInventoryByLocation(int id)
-        {
-            var Inventory = _repo.GetInventoryByLocation(id);
-            return View(Inventory);
-        }
+        
     }
 }

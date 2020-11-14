@@ -1,25 +1,25 @@
-﻿@model IEnumerable<SavvyDB.Models.Inventory>
+﻿@model IEnumerable<SavvyDB.Models.CartItem>
 
 @{
-    ViewData["Title"] = "GetInventoryByLocation";
+    ViewData["Title"] = "GetAllCartItems";
 }
 
-<h1>GetInventoryByLocation</h1>
+<h1>GetAllCartItems</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="AddCartItem">Add To Cart</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.InventoryId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LocationId)
+                @Html.DisplayNameFor(model => model.CartItemId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CartId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
@@ -31,13 +31,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.InventoryId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationId)
+                @Html.DisplayFor(modelItem => item.CartItemId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CartId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)

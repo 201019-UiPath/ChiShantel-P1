@@ -6,14 +6,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualBasic;
-using SavvyWeb.Models;
+using SavvyAPI.Models;
 using SavvyDB;
 using SavvyDB.Models;
+using Microsoft.AspNetCore.Cors;
+using CartItem = SavvyDB.Models.CartItem;
 
-namespace SavvyWeb.Controllers
+namespace SavvyAPI.Controllers
 {
+    [Route("[controller]")]
+    [ApiController]
     public class CartController : Controller
     {
+        
         private readonly IRepo _repo;
         private CartItem newcartitem = new CartItem();
         private int id;
@@ -22,11 +27,8 @@ namespace SavvyWeb.Controllers
             _repo = repo;
 
         }
-        public IActionResult GetAllProducts()
-        {
-            var Product = _repo.GetAllProducts();
-            return View(Product);
-        }
+        [HttpGet("get/{id}")]
+        [Produces("application/json")]
         public IActionResult GetInventoryByLocation(int id)
         {
             var Inventory = _repo.GetInventoryByLocation(id);
@@ -36,6 +38,19 @@ namespace SavvyWeb.Controllers
         {
             return View();
         }
+        [HttpGet("get")]
+        [Produces("application/json")]
+        public IActionResult GetAllCartItems()
+        {
+            var cartitems = _repo.GetAllCartItems(1);
+            return View(cartitems);
+        }
+        /*public IActionResult DeleteCartItem(CartItem cartItem)
+        {
+            var cartitem = _repo.DeleteCartItem(cartItem);
+            return View();
+        }
+        */
         [HttpPost]
         public IActionResult AddCartItem(CartItem cartitem)
         {

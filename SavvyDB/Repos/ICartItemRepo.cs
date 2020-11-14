@@ -1,4 +1,5 @@
 using SavvyDB.Models;
+using System.Collections.Generic;
 namespace SavvyDB.Repos
 
 {
@@ -6,6 +7,7 @@ namespace SavvyDB.Repos
     {
         void AddCartItem(CartItem CartItem);
         CartItem GetCartItem(int id);
+        public List<CartItem> GetAllCartItems(int id);
         void UpdateCartItem(CartItem CartItem);
         void DeleteCartItem(CartItem CartItem);
     }

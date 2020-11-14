@@ -1,6 +1,6 @@
 using System;
 
-namespace SavvyWeb.Models
+namespace SavvyAPI.Models
 {
     public class ErrorViewModel
     {

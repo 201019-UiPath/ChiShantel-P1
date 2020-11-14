@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualBasic;
-using SavvyWeb.Models;
+using SavvyAPI.Models;
 using SavvyDB;
 
-namespace SavvyWeb.Controllers
+namespace SavvyAPI.Controllers
 {
     public class HomeController : Controller
     {
@@ -29,6 +29,10 @@ namespace SavvyWeb.Controllers
             return View(Product);
         }
         public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult GetInventoryByLocation(int id)
         {
             return View();
         }

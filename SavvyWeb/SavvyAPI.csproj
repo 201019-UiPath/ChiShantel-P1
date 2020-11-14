@@ -26,5 +26,8 @@
   <ItemGroup>
     <ProjectReference Include="..\SavvyDB\SavvyDB.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Savvy\" />
+  </ItemGroup>
 
 </Project>
