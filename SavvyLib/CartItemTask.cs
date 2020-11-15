@@ -3,38 +3,38 @@ using SavvyDB.Models;
 using System.Collections.Generic;
 namespace SavvyLib
 {
-    public class CartItemTask
+    public class CartItemTask : ICartItemTask
     {
-        private SavvyRepo repo;
+        SavvyRepo _repo;
         public CartItemTask(SavvyRepo repo)
         {
-            this.repo = repo;
+            _repo = repo;
         }
 
         public void AddCartItem(CartItem cartitem) 
         {
-            repo.AddCartItem(cartitem);
+            _repo.AddCartItem(cartitem);
         }
 
         public CartItem GetCartItem(int id)
         {
-            CartItem cartitem = repo.GetCartItem(id);
+            CartItem cartitem = _repo.GetCartItem(id);
             return cartitem;
         }
         public List<CartItem> GetAllCartItems(int id)
         {
-            List<CartItem> cartitem = repo.GetAllCartItems(id);
+            List<CartItem> cartitem = _repo.GetAllCartItems(id);
             return cartitem;
         }
 
         public void UpdateCartItem(CartItem cartitem)
         {
-            repo.UpdateCartItem(cartitem);
+            _repo.UpdateCartItem(cartitem);
         }
 
         public void DeleteCartItem(CartItem cartitem)
         {
-            repo.DeleteCartItem(cartitem);
+            _repo.DeleteCartItem(cartitem);
         }
     }
 }

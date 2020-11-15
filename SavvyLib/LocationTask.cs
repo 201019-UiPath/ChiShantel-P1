@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace SavvyLib
 
 {
-    public class LocationTask
+    public class LocationTask : ILocationTask
     {
         private SavvyRepo repo;
         public LocationTask(SavvyRepo repo)

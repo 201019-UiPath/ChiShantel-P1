@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SavvyLib", "SavvyLib\SavvyL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SavvyDB", "SavvyDB\SavvyDB.csproj", "{8B909166-2335-48DE-AFC0-5AC680AFAC19}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SavvyAPI", "SavvyWeb\SavvyAPI.csproj", "{D07D532E-858E-42B7-828A-1F28972D3A68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SavvyAPI", "SavvyAPI\SavvyAPI.csproj", "{D07D532E-858E-42B7-828A-1F28972D3A68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

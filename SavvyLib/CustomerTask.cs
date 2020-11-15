@@ -3,7 +3,7 @@ using SavvyDB.Models;
 
 namespace SavvyLib
 {
-    public class CustomerTask
+    public class CustomerTask : ICustomerTask
     {
         private SavvyRepo repo;
         public CustomerTask(SavvyRepo repo)

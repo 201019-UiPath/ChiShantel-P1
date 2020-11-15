@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SavvyLib
 {
-    public class InventoryTask
+    public class InventoryTask : IInventoryTask
     {
         private SavvyRepo repo;
         public InventoryTask(SavvyRepo repo)

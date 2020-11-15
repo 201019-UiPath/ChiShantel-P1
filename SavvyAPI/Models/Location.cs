@@ -7,5 +7,8 @@ namespace SavvyAPI.Models
 {
     public class Location
     {
+        public int Locationid { get; set; }
+        public string Name { get; set; }
+        public int Employees { get; set; }
     }
 }

@@ -11,13 +11,12 @@ namespace SavvyDB
     public class SavvyRepo : IRepo
     {
         private SavvyContext context;
-        private IMapper mapper;
+        private DBMapper mapper;
 
-        public SavvyRepo(SavvyContext context, IMapper mapper)
+        public SavvyRepo()
         {
-            this.context = context;
-            this.mapper = mapper;
-            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            this.context = new SavvyContext();
+            this.mapper = new DBMapper();
         }
 
         public List<Inventory> GetProductsByLocation(int id)

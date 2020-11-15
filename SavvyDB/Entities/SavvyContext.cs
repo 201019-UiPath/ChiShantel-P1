@@ -8,12 +8,11 @@ namespace SavvyDB.Entities
 {
     public partial class SavvyContext : DbContext
     {
-        public SavvyContext()
-        {
-        }
-
         public SavvyContext(DbContextOptions<SavvyContext> options)
             : base(options)
+        {
+        }
+        public SavvyContext()
         {
         }
 
@@ -27,7 +26,7 @@ namespace SavvyDB.Entities
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<PgStatStatements> PgStatStatements { get; set; }
         public virtual DbSet<Products> Products { get; set; }
-
+        /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -41,7 +40,7 @@ namespace SavvyDB.Entities
                 optionsBuilder.UseNpgsql(connectionString);
                 optionsBuilder.EnableSensitiveDataLogging();
             }
-        }
+        }*/
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

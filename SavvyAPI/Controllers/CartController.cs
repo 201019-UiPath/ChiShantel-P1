@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.VisualBasic;
 using SavvyAPI.Models;
 using SavvyDB;
+using SavvyLib;
 using SavvyDB.Models;
 using Microsoft.AspNetCore.Cors;
 using CartItem = SavvyDB.Models.CartItem;
@@ -18,21 +19,30 @@ namespace SavvyAPI.Controllers
     [ApiController]
     public class CartController : Controller
     {
-        
-        private readonly IRepo _repo;
-        private CartItem newcartitem = new CartItem();
-        private int id;
-        public CartController(IRepo repo)
+
+        ICartItemTask _cartitemtask;
+        IProductTask _locationtask;
+        IInventoryTask _inventorytask;
+        public CartController(ICartItemTask cartItemTask, IProductTask locationTask, IInventoryTask inventoryTask)
         {
-            _repo = repo;
+            _cartitemtask = cartItemTask;
+            _locationtask = locationTask;
+            _inventorytask = inventoryTask;
 
         }
         [HttpGet("get/{id}")]
         [Produces("application/json")]
+        [EnableCors("_myAllowSpecificOrigins")]
         public IActionResult GetInventoryByLocation(int id)
         {
-            var Inventory = _repo.GetInventoryByLocation(id);
-            return View(Inventory);
+            try
+            {
+                return Ok(_inventorytask.GetInventoryByLocation(id));
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
         public ViewResult AddCartItem()
         {
@@ -40,30 +50,25 @@ namespace SavvyAPI.Controllers
         }
         [HttpGet("get")]
         [Produces("application/json")]
+        [EnableCors("_myAllowSpecificOrigins")]
         public IActionResult GetAllCartItems()
         {
-            var cartitems = _repo.GetAllCartItems(1);
+            var cartitems = _cartitemtask.GetAllCartItems(1);
             return View(cartitems);
         }
-        /*public IActionResult DeleteCartItem(CartItem cartItem)
+        [HttpDelete("DeleteHouse")]
+        [EnableCors("_myAllowSpecificOrigins")]
+        public IActionResult DeleteCartItem(CartItem cartitem)
         {
-            var cartitem = _repo.DeleteCartItem(cartItem);
+            _cartitemtask.DeleteCartItem(cartitem);
             return View();
         }
-        */
+        
         [HttpPost]
         public IActionResult AddCartItem(CartItem cartitem)
         {
-            if (ModelState.IsValid)
-            {
-                newcartitem.CartId = 1;
-                newcartitem.ProductId = cartitem.ProductId;
-                newcartitem.Quantity = cartitem.Quantity;
-                _repo.AddCartItem(newcartitem);
-                return Redirect("../Location/GetAllProducts");
-            }
-            else
-                return View();
+            _cartitemtask.AddCartItem(cartitem);
+            return CreatedAtAction("AddCartItem", cartitem);
         }
     }
 }
