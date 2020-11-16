@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/SavvyAPI/SavvyAPI/SavvyAPI.csproj",
+                "${workspaceFolder}/SavvyUI/SavvyUI.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/SavvyAPI/SavvyAPI/SavvyAPI.csproj",
+                "${workspaceFolder}/SavvyUI/SavvyUI.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/SavvyAPI/SavvyAPI/SavvyAPI.csproj",
+                "${workspaceFolder}/SavvyUI/SavvyUI.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
