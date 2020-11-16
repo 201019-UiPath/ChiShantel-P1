@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,17 +14,13 @@ namespace SavvyAPI.Controllers
     [ApiController]
     [EnableCors()]
 
-    public class LocationController : Controller
+    public class ProductController : Controller
     {
         private readonly IProductTask producttask;
-        private readonly ILocationTask locationtask;
-        private readonly IInventoryTask inventorytask;
 
-        public LocationController(IProductTask producttask, ILocationTask locationtask, IInventoryTask inventorytask)
+        public ProductController(IProductTask producttask)
         {
             this.producttask = producttask;
-            this.locationtask = locationtask;
-            this.inventorytask= inventorytask;
         }
         [HttpGet("GetAllProducts")]
         [Produces("application/json")]
@@ -40,33 +36,21 @@ namespace SavvyAPI.Controllers
                 return StatusCode(500);
             } 
         }
-        [HttpGet("GetInventoryByLocation/{locationId}")]
+        [HttpPost("add")]
+        [Consumes("application/json")]
         [Produces("application/json")]
         [EnableCors("_AllowSpecificOrigins")]
-        public IActionResult GetInventoryByLocation(int id)
+        public IActionResult AddProduct(Product product)
         {
             try
             {
-                return Ok(inventorytask.GetInventoryByLocation(id));
+                producttask.AddProduct(product);
+                return CreatedAtAction("AddProduct", product);
             }
             catch (Exception)
             {
                 return BadRequest();
             }
-        }
-        [HttpGet("GetAllLocations")]
-        [Produces("application/json")]
-        [EnableCors("_AllowSpecificOrigins")]
-        public IActionResult GetAllLocations()
-        {
-            try 
-            {
-            return Ok(locationtask.GetAllLocations());
-            } 
-            catch(Exception)
-            {
-                return StatusCode(500);
-            } 
         }
     }
 }

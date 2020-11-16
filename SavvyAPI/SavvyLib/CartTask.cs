@@ -4,7 +4,7 @@ using SavvyDB.Models;
 namespace SavvyLib
 {
 
-    public class CartTask
+    public class CartTask : ICartTask
     {
         private ICartRepo repo;
         public CartTask(ICartRepo repo)

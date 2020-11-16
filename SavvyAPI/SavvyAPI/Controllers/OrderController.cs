@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,24 +13,24 @@ namespace SavvyAPI.Controllers
     [Route("[controller]")]
     [ApiController]
     [EnableCors()]
-    public class CartController : Controller
+    public class OrderController : Controller
     {
-        private readonly ICartItemTask cartitemtask;
-        private readonly ICartTask carttask;
-        public CartController(ICartItemTask cartitemtask, ICartTask carttask)
+        private readonly IOrderItemTask orderitemtask;
+        private readonly IOrderTask ordertask;
+        public OrderController(IOrderItemTask orderitemtask, IOrderTask ordertask)
         {
-            this.cartitemtask = cartitemtask;
-            this.carttask = carttask;
+            this.orderitemtask = orderitemtask;
+            this.ordertask = ordertask;
         }
         
-        [HttpGet("GetAllCartItems")]
+        [HttpGet("GetAllOrderItems")]
         [Produces("application/json")]
         [EnableCors("_AllowSpecificOrigins")]
-        public IActionResult GetAllCartItems()
+        public IActionResult GetAllOrderItems()
         {
             try
             {
-                return Ok(cartitemtask.GetAllCartItems(1));
+                return Ok(orderitemtask.GetAllOrderItems());
             }
             catch (Exception)
             {
@@ -38,47 +38,47 @@ namespace SavvyAPI.Controllers
             }
         }
         
-        [HttpPost("AddCartItem")]
+        [HttpPost("AddOrderItem")]
         [Consumes("application/json")]
         [Produces("application/json")]
         [EnableCors("_AllowSpecificOrigins")]
-        public IActionResult AddCartItem(CartItem cartitem)
+        public IActionResult AddOrderItem(OrderItem orderitem)
         {
             try
             {
-                cartitemtask.AddCartItem(cartitem);
-                return CreatedAtAction("AddCartItem", cartitem);
+                orderitemtask.AddOrderItem(orderitem);
+                return CreatedAtAction("AddOrderItem", orderitem);
             }
             catch (Exception)
             {
                 return BadRequest();
             }
         }
-        [HttpPut("UpdateCartItem")]
+        [HttpPut("UpdateOrderItem")]
         [Consumes("application/json")]
         [Produces("application/json")]
         [EnableCors("_AllowSpecificOrigins")]
-        public IActionResult UpdateCartItem(CartItem item)
+        public IActionResult UpdateOrderItem(OrderItem orderitem)
         {
             try
             {
-                cartitemtask.UpdateCartItem(item);
-                return CreatedAtAction("UpdateCartItem", item);
+                orderitemtask.UpdateOrderItem(orderitem);
+                return CreatedAtAction("UpdateOrderItem", orderitem);
             }
             catch (Exception)
             {
                 return BadRequest();
             }
         }
-        [HttpDelete("DeleteCartItem")]
+        [HttpDelete("DeleteOrderItem")]
         [Consumes("application/json")]
         [Produces("application/json")]
         [EnableCors("_AllowSpecificOrigins")]
-        public IActionResult DeleteCartItem(CartItem item)
+        public IActionResult DeleteOrderItem(OrderItem orderitem)
         {
             try
             {
-                cartitemtask.DeleteCartItem(item);
+                orderitemtask.RemoveOrderItem(orderitem);
                 return Ok();
             }
             catch (Exception)
@@ -86,47 +86,47 @@ namespace SavvyAPI.Controllers
                 return BadRequest();
             }
         }
-        [HttpPost("AddCart")]
+        [HttpPost("AddOrder")]
         [Consumes("application/json")]
         [Produces("application/json")]
         [EnableCors("_AllowSpecificOrigins")]
-        public IActionResult AddCart(Cart cart)
+        public IActionResult AddOrder(Order order)
         {
             try
             {
-                carttask.AddCart(cart);
-                return CreatedAtAction("AddCart", cart);
+                ordertask.AddOrder(order);
+                return CreatedAtAction("AddOrder", order);
             }
             catch (Exception)
             {
                 return BadRequest();
             }
         }
-        [HttpPut("UpdateCart")]
+        [HttpPut("UpdateOrder")]
         [Consumes("application/json")]
         [Produces("application/json")]
         [EnableCors("_AllowSpecificOrigins")]
-        public IActionResult UpdateCartItem(Cart cart)
+        public IActionResult UpdateOrderItem(Order order)
         {
             try
             {
-                carttask.UpdateCart(cart);
-                return CreatedAtAction("UpdateCart", cart);
+                ordertask.UpdateOrder(order);
+                return CreatedAtAction("UpdateOrder", order);
             }
             catch (Exception)
             {
                 return BadRequest();
             }
         }
-        [HttpDelete("DeleteCart")]
+        [HttpDelete("DeleteOrder")]
         [Consumes("application/json")]
         [Produces("application/json")]
         [EnableCors("_AllowSpecificOrigins")]
-        public IActionResult DeleteCart(Cart cart)
+        public IActionResult DeleteOrder(Order order)
         {
             try
             {
-                carttask.DeleteCart(cart);
+                ordertask.RemoveOrder(order);
                 return Ok();
             }
             catch (Exception)

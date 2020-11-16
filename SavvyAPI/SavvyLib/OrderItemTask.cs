@@ -1,15 +1,21 @@
 using SavvyDB;
 using SavvyDB.Models;
+using System.Collections.Generic;
 
 namespace SavvyLib
 {
-    public class OrderItemTask
+    public class OrderItemTask : IOrderItemTask
     {
         private IOrderItemRepo repo;
 
         public OrderItemTask(IOrderItemRepo repo)
         {
             this.repo = repo;
+        }
+        public List<OrderItem> GetAllOrderItems()
+        {
+            return repo.GetAllOrderItems();
+
         }
         public void AddOrderItem(OrderItem OrderItem)
         {

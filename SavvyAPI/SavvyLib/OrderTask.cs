@@ -5,7 +5,7 @@ using System;
 
 namespace SavvyLib
 {
-    public class OrderTask
+    public class OrderTask : IOrderTask
     {
         private IRepo repo;
 
@@ -19,7 +19,7 @@ namespace SavvyLib
         }
         public Order GetOrder(int id)
         {
-           return repo.GetOrder(id);
+            return repo.GetOrder(id);
         }
         public List<Order> GetAllOrders()
         {
