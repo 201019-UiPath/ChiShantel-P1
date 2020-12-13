@@ -24,9 +24,8 @@ Customers are able to:
   * Check out function
 
 # Getting Started
-Required applications:
-  Visual Studio Code
-Open VS Code and clone the project with the command in the terminal: https://github.com/201019-UiPath/ChiShantel-P1.git
+Required applications: Visual Studio Code
+* Open VS Code and clone the project with the command in the terminal: https://github.com/201019-UiPath/ChiShantel-P1.git
 
 # License
 This project uses the following license: MIT License.
